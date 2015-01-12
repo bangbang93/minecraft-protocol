@@ -16,6 +16,12 @@
 		<td>0或者1</td>
 		<td>值只可能为true(0x01)或者false(0x00)</td>
 	</tr>
+	<tr>
+		<td>byte</td>
+		<td>1</td>
+		<td>-128到127</td>
+		<td>有符号</td>
+	</tr>
 </table>
 
 # 翻译人员
