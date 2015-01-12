@@ -67,8 +67,8 @@
 	<tr>
 		<td>VarInt</td>
 		<td>可变</td>
-		<td> [Google-Protocol Buffer 32-bit Varint](https://developers.google.com/protocol-buffers/docs/encoding#varints) </td>
-		<td>[中文解释](http://zlx19900228.iteye.com/blog/1058659)</td>
+		<td>https://developers.google.com/protocol-buffers/docs/encoding#varints </td>
+		<td>中文解释：http://zlx19900228.iteye.com/blog/1058659</td>
 	</tr>
 	<tr>
 		<td>VarLong</td>
@@ -79,13 +79,13 @@
 	<tr>
 		<td>metadata</td>
 		<td>可变</td>
-		<td>[Entity Metadata](http://wiki.vg/Entities#Entity_Metadata_Format)</td>
+		<td>http://wiki.vg/Entities#Entity_Metadata_Format</td>
 		<td>中文翻译TODO</td>
 	</tr>
 	<tr>
 		<td>Slot Data</td>
 		<td>可变</td>
-		<td>[Slot Data](http://wiki.vg/Slot_Data)</td>
+		<td>http://wiki.vg/Slot_Data</td>
 		<td>中文翻译TODO</td>
 	</tr>
 	<tr>
@@ -105,8 +105,11 @@
 
 # Position
 被分成三部分的64位长整形
+
 x: 26位最高有效位
+
 z: 26位最低有效位
+
 y: 其中的12位
 
 按照以下方式编码
