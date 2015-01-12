@@ -4,6 +4,9 @@ Minecraft 协议
 # 翻译人员
 [bangbang93](https://blog.bangbang93.com)
 
+# 目录
+[类型定义](Definitions.md)
+
 # 前言
 //TODO
 
