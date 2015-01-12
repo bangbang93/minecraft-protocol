@@ -5,7 +5,7 @@ Minecraft 协议
 [bangbang93](https://blog.bangbang93.com)
 
 # 目录
-[类型定义](Definitions.md)
+[类型定义](definitions.md)
 
 # 前言
 //TODO
