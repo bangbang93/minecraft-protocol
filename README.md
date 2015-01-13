@@ -314,7 +314,7 @@ Minecraft 协议
 
 认领完成翻译章节后可以开始翻译
 
-先fork项目到自己的git，然后翻译完成后发起`Pull Requests`
+先fork项目到自己的git，然后翻译完成后发起`Pull Request`
 
 等审核通过后再修改章节的翻译状态
 
