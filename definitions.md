@@ -1,5 +1,5 @@
 # 类型定义
-全部发向网络的数据都遵守大字节序，这意味着字节将按照高位到地位的顺序发送。大部分现在的计算机都是使用的小字节序，所以有可能需要在发送信息前交换字节顺序。
+全部发向网络的数据都遵守大端序，这意味着字节将按照高位到地位的顺序发送。大部分现在的计算机都是使用的小端序，所以有可能需要在发送信息前交换字节顺序。
 
 除了字符串类型和元数据以外的类型，将会被使用一个自定义的方法解码，这些数据类型将会使用Java的[DataInputStream](http://download.oracle.com/javase/1.4.2/docs/api/java/io/DataInputStream.html)和[DataOutputStream](http://download.oracle.com/javase/1.4.2/docs/api/java/io/DataOutputStream.html)
 
@@ -67,8 +67,8 @@
 	<tr>
 		<td>VarInt</td>
 		<td>可变</td>
-		<td> [Google-Protocol Buffer 32-bit Varint](https://developers.google.com/protocol-buffers/docs/encoding#varints) </td>
-		<td>[中文解释](http://zlx19900228.iteye.com/blog/1058659)</td>
+		<td>https://developers.google.com/protocol-buffers/docs/encoding#varints </td>
+		<td>中文解释：http://zlx19900228.iteye.com/blog/1058659</td>
 	</tr>
 	<tr>
 		<td>VarLong</td>
@@ -79,13 +79,13 @@
 	<tr>
 		<td>metadata</td>
 		<td>可变</td>
-		<td>[Entity Metadata](http://wiki.vg/Entities#Entity_Metadata_Format)</td>
+		<td>http://wiki.vg/Entities#Entity_Metadata_Format</td>
 		<td>中文翻译TODO</td>
 	</tr>
 	<tr>
 		<td>Slot Data</td>
 		<td>可变</td>
-		<td>[Slot Data](http://wiki.vg/Slot_Data)</td>
+		<td>http://wiki.vg/Slot_Data</td>
 		<td>中文翻译TODO</td>
 	</tr>
 	<tr>
@@ -105,8 +105,11 @@
 
 # Position
 被分成三部分的64位长整形
+
 x: 26位最高有效位
+
 z: 26位最低有效位
+
 y: 其中的12位
 
 按照以下方式编码
