@@ -5,7 +5,7 @@ Minecraft 协议
 目录
 ----
 
-* 1 [类型定义](definitions.md)
+* 1 [类型定义](definitions.md#类型定义)
   * 1.1 数据类型
   * 1.2 坐标
   * 1.3 定点小数
@@ -18,7 +18,7 @@ Minecraft 协议
   * 4.1 服务器端
     * 4.1.1 握手
 * 5 游戏中
-  * 5.1 客户端
+  * 5.1 [客户端](clientboundplay.md#客户端)
     * 5.1.1 保持在线
     * 5.1.2 加入游戏
     * 5.1.3 聊天信息
@@ -160,8 +160,8 @@ Minecraft 协议
     * 4.1.1 Handshake
 * 5 Play
   * 5.1 Clientbound
-    * 5.1.1 Keep Alive
-    * 5.1.2 Join Game
+    * 5.1.1 Keep Alive      // KBlackcn   [完成]
+    * 5.1.2 Join Game       // KBlackcn   [完成]
     * 5.1.3 Chat Message
     * 5.1.4 Time Update
     * 5.1.5 Entity Equipment
