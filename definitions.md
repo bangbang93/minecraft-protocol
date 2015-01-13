@@ -111,14 +111,18 @@ y: 其中的12位
 
 按照以下方式编码
 
-    ((x & 0x3FFFFFF) << 38) | ((y & 0xFFF) << 26) | (z & 0x3FFFFFF)
+```java
+((x & 0x3FFFFFF) << 38) | ((y & 0xFFF) << 26) | (z & 0x3FFFFFF)
+```
 
 可以按照以下方式解码
 
-     long val; // val是一个坐标
-     x = val >> 38;
-     y = (val >> 26) & 0xFFF
-     z = val << 38 >> 38
+```java
+long val; // val是一个坐标
+x = val >> 38;
+y = (val >> 26) & 0xFFF
+z = val << 38 >> 38
+```
 
 # 翻译人员
 - bangbang93
