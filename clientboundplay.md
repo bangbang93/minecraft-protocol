@@ -1,6 +1,4 @@
-# 游戏中
-
-## 客户端
+# 游戏中——客户端
 
 # 保持在线
 
@@ -77,7 +75,7 @@
 	</tr>
 	<tr>
 		<td>Level Type</td>
-		<td>string</td>
+		<td>String</td>
 		<td>
 			default: 普通世界 <br>
 			flat: 超平坦 <br>
@@ -92,3 +90,39 @@
 		<td></td>
 	</tr>
 <table>
+
+**非法的Dimension将使客户端崩溃！**
+
+#聊天消息
+
+区分聊天消息和系统消息对于尊重使用者的聊天可见设置是十分重要的，2号位置可以同时接受Json格式或是老的格式。
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x02</td>
+		<td rowspan=2>聊天</td>
+		<td rowspan=2>客户端</td>
+		<td>Json Data</td>
+		<td>String</td>
+		<td>聊天消息</td>
+	</tr>
+	<tr>
+		<td>Position</td>
+		<td>Byte</td>
+		<td>
+			0: 聊天消息（聊天窗） <br>
+			1: 系统消息（聊天窗） <br>
+			2: 浮动栏
+		</td>
+	</tr>
+</table>
+
+**非法的Json数据将使客户端崩溃！**
