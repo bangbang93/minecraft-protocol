@@ -21,7 +21,7 @@
 		<td>VarInt</td>
 		<td></td>
 	</tr>
-<table>
+</table>
 
 # 加入游戏
 
@@ -89,7 +89,7 @@
 		<td>Boolean</td>
 		<td></td>
 	</tr>
-<table>
+</table>
 
 **非法的Dimension将使客户端崩溃！**
 
