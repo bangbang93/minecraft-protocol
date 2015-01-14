@@ -5,8 +5,8 @@ Minecraft 协议
 目录
 ----
 
-* 1 [类型定义](definitions.md#类型定义)
-  * 1.1 数据类型
+* 1 [定义](definitions.md)
+  * 1.1 [数据类型](definitions.md#数据类型)
   * 1.2 坐标
   * 1.3 定点小数
   * 1.4 其他定义
@@ -18,7 +18,7 @@ Minecraft 协议
   * 4.1 服务器端
     * 4.1.1 握手
 * 5 游戏中
-  * 5.1 [客户端](clientboundplay.md#游戏中——客户端)
+  * 5.1 [客户端](clientboundplay.md)
     * 5.1.1 [保持在线](clientboundplay.md#保持在线)
     * 5.1.2 [加入游戏](clientboundplay.md#加入游戏)
     * 5.1.3 [聊天消息](clientboundplay.md#聊天消息)
