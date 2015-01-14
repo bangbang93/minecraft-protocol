@@ -126,3 +126,73 @@
 </table>
 
 **非法的Json数据将使客户端崩溃！**
+
+# 时间更新
+
+时间是基于tick(刻)的，1s = 20 ticks，游戏中一天共24000刻，大约相当于现实中的20分钟。
+
+时间是通过总刻数对24000去模得到的，0是日出。6000是正午，1200是日落，1800是午夜。
+
+服务器默认每秒将tick数增加20
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x03</td>
+		<td rowspan=2>游戏</td>
+		<td rowspan=2>客户端</td>
+		<td>Age of world</td>
+		<td>Long</td>
+		<td>不会被服务器命令影响</td>
+	</tr>
+	<tr>
+		<td>Time of day</td>
+		<td>Long</td>
+		<td>
+			世界（或地区）时间，以tick计 <br>
+			如果为负数，太阳的位置（时间）将停留在它的绝对值的位置
+		</td>
+	</tr>
+</table>
+
+# 实体装备
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x04</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>客户端</td>
+		<td>EntityID</td>
+		<td>VarInt</td>
+		<td>实体的ID</td>
+	</tr>
+	<tr>
+		<td>Slot</td>
+		<td>Short</td>
+		<td>
+			装备的类型 <br>
+			0: 手持 <br>
+			1-4: 分别对应 鞋子 裤衩 胸甲 头盔
+		</td>
+	</tr>
+	<tr>
+		<td>Item</td>
+		<td>Slot</td>
+		<td>Slot格式的装备（物品）</td>
+	</tr>
+</table>
