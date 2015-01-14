@@ -75,7 +75,7 @@ Minecraft 协议
     * 5.1.53 地图
     * 5.1.54 更新方块实体
     * 5.1.55 打开木牌编辑窗
-    * 5.1.56 统计           //意义不明
+    * 5.1.56 统计信息
     * 5.1.57 玩家列表
     * 5.1.58 玩家能力
     * 5.1.59 Tab补全
@@ -159,15 +159,15 @@ Minecraft 协议
   * 4.1 Serverbound
     * 4.1.1 Handshake
 * 5 Play
-  * 5.1 Clientbound         // KBlackcn   [翻译]
-    * 5.1.1 Keep Alive      // KBlackcn   [完成]
-    * 5.1.2 Join Game       // KBlackcn   [完成]
-    * 5.1.3 Chat Message    // KBlackcn   [完成]
-    * 5.1.4 Time Update     // KBlackcn   [完成]
-    * 5.1.5 Entity Equipment// KBlackcn   [完成]
-    * 5.1.6 Spawn Position  // KBlackcn   [完成]
-    * 5.1.7 Update Health   // KBlackcn   [完成]
-    * 5.1.8 Respawn         // KBlackcn   [完成]
+  * 5.1 Clientbound          // KBlackcn   [翻译]
+    * 5.1.1 Keep Alive       // KBlackcn   [完成]
+    * 5.1.2 Join Game        // KBlackcn   [完成]
+    * 5.1.3 Chat Message     // KBlackcn   [完成]
+    * 5.1.4 Time Update      // KBlackcn   [完成]
+    * 5.1.5 Entity Equipment // KBlackcn   [完成]
+    * 5.1.6 Spawn Position   // KBlackcn   [完成]
+    * 5.1.7 Update Health    // KBlackcn   [完成]
+    * 5.1.8 Respawn          // KBlackcn   [完成]
     * 5.1.9 Player Position And Look
     * 5.1.10 Held Item Change
     * 5.1.11 Use Bed
