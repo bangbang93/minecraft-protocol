@@ -5,7 +5,7 @@ Minecraft 协议
 目录
 ----
 
-* 1 [类型定义](definitions.md)
+* 1 [类型定义](definitions.md#类型定义)
   * 1.1 数据类型
   * 1.2 坐标
   * 1.3 定点小数
@@ -18,10 +18,10 @@ Minecraft 协议
   * 4.1 服务器端
     * 4.1.1 握手
 * 5 游戏中
-  * 5.1 客户端
-    * 5.1.1 保持在线
-    * 5.1.2 加入游戏
-    * 5.1.3 聊天信息
+  * 5.1 [客户端](clientboundplay.md#游戏中——客户端)
+    * 5.1.1 [保持在线](clientboundplay.md#保持在线)
+    * 5.1.2 [加入游戏](clientboundplay.md#加入游戏)
+    * 5.1.3 [聊天消息](clientboundplay.md#聊天消息)
     * 5.1.4 时间更新
     * 5.1.5 实体装备
     * 5.1.6 出生点
@@ -96,7 +96,7 @@ Minecraft 协议
     * 5.1.74 更新实体NBT
     * 5.2 服务器端
     * 5.2.1 保持在线
-    * 5.2.2 聊天信息
+    * 5.2.2 聊天消息
     * 5.2.3 使用实体
     * 5.2.4 玩家
     * 5.2.5 玩家坐标
@@ -159,10 +159,10 @@ Minecraft 协议
   * 4.1 Serverbound
     * 4.1.1 Handshake
 * 5 Play
-  * 5.1 Clientbound
-    * 5.1.1 Keep Alive
-    * 5.1.2 Join Game
-    * 5.1.3 Chat Message
+  * 5.1 Clientbound         // KBlackcn   [翻译]
+    * 5.1.1 Keep Alive      // KBlackcn   [完成]
+    * 5.1.2 Join Game       // KBlackcn   [完成]
+    * 5.1.3 Chat Message    // KBlackcn   [完成]
     * 5.1.4 Time Update
     * 5.1.5 Entity Equipment
     * 5.1.6 Spawn Position
@@ -314,7 +314,7 @@ Minecraft 协议
 
 认领完成翻译章节后可以开始翻译
 
-先fork项目到自己的git，然后翻译完成后发起`Pull Requests`
+先fork项目到自己的git，然后翻译完成后发起`Pull Request`
 
 等审核通过后再修改章节的翻译状态
 
