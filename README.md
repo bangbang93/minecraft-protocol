@@ -29,7 +29,7 @@ Minecraft 协议
     * 5.1.8 重生
     * 5.1.9 玩家坐标和视点
     * 5.1.10 更换手持物品
-    * 5.1.11 用床
+    * 5.1.11 床的使用
     * 5.1.12 动作
     * 5.1.13 生成玩家
     * 5.1.14 捡拾物品
@@ -146,11 +146,11 @@ Minecraft 协议
 翻译状态
 --------
 ```
-* 1 Definitions             // bangbang93 [完成]
+* 1 Definitions             // bangbang93 [翻译]
   * 1.1 Data types          // bangbang93 [完成]
   * 1.2 Position            // bangbang93 [完成]
-  * 1.3 Fixed-point numbers // bangbang93 [翻译]
-  * 1.4 Other definitions   // bangbang93 [翻译]
+  * 1.3 Fixed-point numbers // bangbang93 [待译]
+  * 1.4 Other definitions   // bangbang93 [待译]
 * 2 Packets
   * 2.1 Protocol Version
 * 3 Packet format
