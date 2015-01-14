@@ -24,9 +24,9 @@ Minecraft 协议
     * 5.1.3 [聊天消息](clientboundplay.md#聊天消息)
     * 5.1.4 [时间更新](clientboundplay.md#时间更新)
     * 5.1.5 [实体装备](clientboundplay.md#实体装备)
-    * 5.1.6 出生点
-    * 5.1.7 更新生命值
-    * 5.1.8 重生
+    * 5.1.6 [出生点](clientboundplay.md#出生点)
+    * 5.1.7 [更新生命值](clientboundplay.md#更新生命值)
+    * 5.1.8 [重生](clientboundplay.md#重生)
     * 5.1.9 玩家坐标和视点
     * 5.1.10 更换手持物品
     * 5.1.11 用床
@@ -165,9 +165,9 @@ Minecraft 协议
     * 5.1.3 Chat Message    // KBlackcn   [完成]
     * 5.1.4 Time Update     // KBlackcn   [完成]
     * 5.1.5 Entity Equipment// KBlackcn   [完成]
-    * 5.1.6 Spawn Position
-    * 5.1.7 Update Health
-    * 5.1.8 Respawn
+    * 5.1.6 Spawn Position  // KBlackcn   [完成]
+    * 5.1.7 Update Health   // KBlackcn   [完成]
+    * 5.1.8 Respawn         // KBlackcn   [完成]
     * 5.1.9 Player Position And Look
     * 5.1.10 Held Item Change
     * 5.1.11 Use Bed
