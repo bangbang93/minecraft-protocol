@@ -152,7 +152,7 @@ Minecraft 协议
   * 1.3 Fixed-point numbers // bangbang93 [翻译]
   * 1.4 Other definitions   // bangbang93 [翻译]
 * 2 Packets
-  * 2.1 Protocol Version
+  * 2.1 Protocol Version    // DeckerCHAN [翻译]
 * 3 Packet format
   * 3.1 Post compression
 * 4 Handshaking
