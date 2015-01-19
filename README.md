@@ -235,9 +235,9 @@ Minecraft 协议
     * 5.1.72 Player List Header/Footer
     * 5.1.73 Resource Pack Send
     * 5.1.74 Update Entity NBT
-    * 5.2 Serverbound
-    * 5.2.1 Keep Alive
-    * 5.2.2 Chat Message
+    * 5.2 Serverbound    
+    * 5.2.1 Keep Alive       // DeckerCHAN [完成]
+    * 5.2.2 Chat Message     // DeckerCHAN [完成]
     * 5.2.3 Use Entity
     * 5.2.4 Player
     * 5.2.5 Player Position
