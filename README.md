@@ -146,18 +146,18 @@ Minecraft 协议
 翻译状态
 --------
 ```
-* 1 Definitions                // bangbang93 [翻译]
-  * 1.1 Data types             // bangbang93 [完成]
-  * 1.2 Position               // bangbang93 [完成]
-  * 1.3 Fixed-point numbers    // bangbang93 [待译]
-  * 1.4 Other definitions      // bangbang93 [待译]
+* 1 Definitions                 // bangbang93 [翻译]
+  * 1.1 Data types              // bangbang93 [完成]
+  * 1.2 Position                // bangbang93 [完成]
+  * 1.3 Fixed-point numbers     // bangbang93 [待译]
+  * 1.4 Other definitions       // bangbang93 [待译]
 * 2 Packets
   * 2.1 Protocol Version
-* 3 Packet format              // szszss     [完成]
-  * 3.1 Post compression       // szszss     [完成]
-* 4 Handshaking                // szszss     [完成]
-  * 4.1 Serverbound            // szszss     [完成]
-    * 4.1.1 Handshake          // szszss     [完成]
+* 3 Packet format               // szszss     [完成]
+  * 3.1 Post compression        // szszss     [完成]
+* 4 Handshaking                 // szszss     [完成]
+  * 4.1 Serverbound             // szszss     [完成]
+    * 4.1.1 Handshake           // szszss     [完成]
 * 5 Play
   * 5.1 Clientbound             // KBlackcn  [翻译]
     * 5.1.1 Keep Alive          // KBlackcn  [完成]
@@ -236,15 +236,15 @@ Minecraft 协议
     * 5.1.73 Resource Pack Send
     * 5.1.74 Update Entity NBT
     * 5.2 Serverbound    
-    * 5.2.1 Keep Alive       // DeckerCHAN [完成]
-    * 5.2.2 Chat Message     // DeckerCHAN [完成]
-    * 5.2.3 Use Entity
-    * 5.2.4 Player
-    * 5.2.5 Player Position
-    * 5.2.6 Player Look
-    * 5.2.7 Player Position And Look
-    * 5.2.8 Player Digging
-    * 5.2.9 Player Block Placement
+    * 5.2.1 Keep Alive                // DeckerCHAN [完成]
+    * 5.2.2 Chat Message              // DeckerCHAN [完成]
+    * 5.2.3 Use Entity                // szszss     [完成]
+    * 5.2.4 Player                    // szszss     [完成]
+    * 5.2.5 Player Position           // szszss     [完成]
+    * 5.2.6 Player Look               // szszss     [完成]
+    * 5.2.7 Player Position And Look  // szszss     [完成]
+    * 5.2.8 Player Digging            // szszss     [完成]
+    * 5.2.9 Player Block Placement    // szszss     [完成]
     * 5.2.10 Held Item Change
     * 5.2.11 Animation
     * 5.2.12 Entity Action
