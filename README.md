@@ -146,28 +146,28 @@ Minecraft 协议
 翻译状态
 --------
 ```
-* 1 Definitions             // bangbang93 [翻译]
-  * 1.1 Data types          // bangbang93 [完成]
-  * 1.2 Position            // bangbang93 [完成]
-  * 1.3 Fixed-point numbers // bangbang93 [待译]
-  * 1.4 Other definitions   // bangbang93 [待译]
+* 1 Definitions                // bangbang93 [翻译]
+  * 1.1 Data types             // bangbang93 [完成]
+  * 1.2 Position               // bangbang93 [完成]
+  * 1.3 Fixed-point numbers    // bangbang93 [待译]
+  * 1.4 Other definitions      // bangbang93 [待译]
 * 2 Packets
   * 2.1 Protocol Version
-* 3 Packet format
-  * 3.1 Post compression
-* 4 Handshaking
-  * 4.1 Serverbound
-    * 4.1.1 Handshake
+* 3 Packet format              // szszss     [完成]
+  * 3.1 Post compression       // szszss     [完成]
+* 4 Handshaking                // szszss     [完成]
+  * 4.1 Serverbound            // szszss     [完成]
+    * 4.1.1 Handshake          // szszss     [完成]
 * 5 Play
-  * 5.1 Clientbound          // KBlackcn   [翻译]
-    * 5.1.1 Keep Alive       // KBlackcn   [完成]
-    * 5.1.2 Join Game        // KBlackcn   [完成]
-    * 5.1.3 Chat Message     // KBlackcn   [完成]
-    * 5.1.4 Time Update      // KBlackcn   [完成]
-    * 5.1.5 Entity Equipment // KBlackcn   [完成]
-    * 5.1.6 Spawn Position   // KBlackcn   [完成]
-    * 5.1.7 Update Health    // KBlackcn   [完成]
-    * 5.1.8 Respawn          // KBlackcn   [完成]
+  * 5.1 Clientbound             // KBlackcn  [翻译]
+    * 5.1.1 Keep Alive          // KBlackcn  [完成]
+    * 5.1.2 Join Game           // KBlackcn  [完成]
+    * 5.1.3 Chat Message        // KBlackcn  [完成]
+    * 5.1.4 Time Update         // KBlackcn  [完成]
+    * 5.1.5 Entity Equipment    // KBlackcn  [完成]
+    * 5.1.6 Spawn Position      // KBlackcn  [完成]
+    * 5.1.7 Update Health       // KBlackcn  [完成]
+    * 5.1.8 Respawn             // KBlackcn  [完成]
     * 5.1.9 Player Position And Look
     * 5.1.10 Held Item Change
     * 5.1.11 Use Bed
@@ -235,9 +235,9 @@ Minecraft 协议
     * 5.1.72 Player List Header/Footer
     * 5.1.73 Resource Pack Send
     * 5.1.74 Update Entity NBT
-    * 5.2 Serverbound
-    * 5.2.1 Keep Alive
-    * 5.2.2 Chat Message
+    * 5.2 Serverbound    
+    * 5.2.1 Keep Alive       // DeckerCHAN [完成]
+    * 5.2.2 Chat Message     // DeckerCHAN [完成]
     * 5.2.3 Use Entity
     * 5.2.4 Player
     * 5.2.5 Player Position
@@ -262,22 +262,22 @@ Minecraft 协议
     * 5.2.24 Plugin Message
     * 5.2.25 Spectate
     * 5.2.26 Resource Pack Status
-* 6 Status
-  * 6.1 Clientbound
-    * 6.1.1 Response
-    * 6.1.2 Ping
-    * 6.2 Serverbound
-    * 6.2.1 Request
-    * 6.2.2 Ping
-* 7 Login
-  * 7.1 Clientbound
-    * 7.1.1 Disconnect
-    * 7.1.2 Encryption Request
-    * 7.1.3 Login Success
-    * 7.1.4 Set Compression
-  * 7.2 Serverbound
-    * 7.2.1 Login Start
-    * 7.2.2 Encryption Response
+* 6 Status                      // szszss     [完成]
+  * 6.1 Clientbound             // szszss     [完成]
+    * 6.1.1 Response            // szszss     [完成]
+    * 6.1.2 Ping                // szszss     [完成]
+    * 6.2 Serverbound           // szszss     [完成]
+    * 6.2.1 Request             // szszss     [完成]
+    * 6.2.2 Ping                // szszss     [完成]
+* 7 Login                       // szszss     [完成]
+  * 7.1 Clientbound             // szszss     [完成]
+    * 7.1.1 Disconnect          // szszss     [完成]
+    * 7.1.2 Encryption Request  // szszss     [完成]
+    * 7.1.3 Login Success       // szszss     [完成]
+    * 7.1.4 Set Compression     // szszss     [完成]
+  * 7.2 Serverbound             // szszss     [完成]
+    * 7.2.1 Login Start         // szszss     [完成]
+    * 7.2.2 Encryption Response // szszss     [完成]
 * 8 See Also
 ```
 
