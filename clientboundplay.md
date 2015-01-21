@@ -309,7 +309,7 @@
 **避免更改玩家的维度到他们原来所在的维度，将会出现奇怪的错误：比如这些玩家将无法攻击其他的玩家（在死亡重生后恢复）**
 
 ##玩家坐标和视点
-　　更新玩家在服务器上的坐标。如果服务器上次已知的玩家坐标和最新发送的数据包的数据的坐标位置相差超过100单位的话，将导致玩家因“移动速度太快 :( (使用作弊器?)”而提出服务器。一般来说如果坐标的X轴或Z轴的值大于3.2E7D将导致客户端被踢出并显示“无效的坐标”。
+　　更新玩家在服务器上的坐标。如果服务器上次已知的玩家坐标和最新发送的数据包的数据的坐标位置相差超过100单位的话，将导致玩家因“移动速度太快 :( (使用作弊器?)”而提出服务器。一般来说如果定点小数的X轴或Z轴的值大于3.2E7D将导致客户端被踢出并显示“无效的坐标”。
 　　偏航（yaw）以角度计算，而且会遵循经典三角规则。偏航的圆单位是在XZ平面上以(0,1)为原点绕逆时针旋转，90度为(-1,0)，180度时为(0,-1)，270度时为(1,0)。
 　　另外，偏航的数值不一定要在0到360之间；任意数字都是有效的，包括负数和大于360的数字。
 　　仰角（pitch）是以角度计算，0代表直视前方，-90表示看正上方，而90表示看正下方。
@@ -574,3 +574,107 @@
    </tr>
 </table>
 
+##生成玩家
+这个包会在玩家到达可见区域发送，**不是**在玩家加入时发送。
+Servers can, however, safely spawn player entities for players not in visible range. The client appears to handle it correctly.
+当服务器的online-mode（正版模式），UUID必须有效而且要有有效的皮肤，在离线模式下需要UUID v3。
+
+      <+Grum> i will never confirm this as a feature you know that :)
+      
+在这个示例UUID,xxxxxxxx-xxxx-Yxxx-xxxx-xxxxxxxxxxxx中，UUID版本是通过Y来指定的。所以对于UUID v3来说，Y的值一直都为3；对UUID v2来说，Y的值一直为2。
+
+<table>
+   <tr>
+      <td>包标识符</td>
+      <td>类别</td>
+      <td>绑定到</td>
+      <td>字段名</td>
+      <td>字段类别</td>
+      <td>说明</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>0x0C</td>
+      <td>游戏</td>
+      <td>客户端</td>
+      <td>Entity ID</td>
+      <td></td>
+      <td>VarInt</td>
+      <td>玩家的实体ID</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Player UUID</td>
+      <td></td>
+      <td>UUID</td>
+      <td>玩家的UUID</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>X</td>
+      <td></td>
+      <td>Int</td>
+      <td>Player X as a Fixed-Point number</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Y</td>
+      <td></td>
+      <td>Int</td>
+      <td>Player X as a Fixed-Point number</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Z</td>
+      <td></td>
+      <td>Int</td>
+      <td>Player X as a Fixed-Point number</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Yaw</td>
+      <td></td>
+      <td>Byte</td>
+      <td>玩家的方向的压缩字节</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Pitch</td>
+      <td></td>
+      <td>Byte</td>
+      <td>玩家的方向的压缩字节</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Current Item</td>
+      <td></td>
+      <td>Short</td>
+      <td>玩家当前所拿的物体。注意这个当为0意为“没有物体”，不像在其他包中所用的-1那样。负数值将导致客户端崩溃</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Metadata</td>
+      <td></td>
+      <td>Metadata</td>
+      <td>如果没有metadata发送客户端将崩溃</td>
+   </tr>
+</table>
+
+
+**如果没有metadata发送客户端将崩溃**
