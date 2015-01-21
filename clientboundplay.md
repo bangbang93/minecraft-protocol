@@ -442,3 +442,26 @@
    </tr>
 </table>
 
+##更换手持物品
+发送数据包来改变玩家所选择的物品槽
+
+<table>
+   <tr>
+      <td>包标识符</td>
+      <td>类别</td>
+      <td>绑定到</td>
+      <td>字段名</td>
+      <td>字段类别</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>0x09</td>
+      <td>游戏</td>
+      <td>客户端</td>
+      <td>Slot</td>
+      <td>Byte</td>
+      <td>玩家所选择的物品槽(0-8)</td>
+   </tr>
+   <tr>
+   </tr>
+</table>
