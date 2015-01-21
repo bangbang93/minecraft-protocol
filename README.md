@@ -27,11 +27,11 @@ Minecraft 协议
     * 5.1.6 [出生点](clientboundplay.md#出生点)
     * 5.1.7 [更新生命值](clientboundplay.md#更新生命值)
     * 5.1.8 [重生](clientboundplay.md#重生)
-    * 5.1.9 玩家坐标和视点
-    * 5.1.10 更换手持物品
-    * 5.1.11 床的使用
-    * 5.1.12 动作
-    * 5.1.13 生成玩家
+    * 5.1.9 [玩家坐标和视点](clientboundplay.md#玩家坐标和视点)
+    * 5.1.10 [更换手持物品](clientboundplay.md#更换手持物品)
+    * 5.1.11 [床的使用](clientboundplay.md#床的使用)
+    * 5.1.12 [动作](clientboundplay.md#动作)
+    * 5.1.13 [生成玩家](clientboundplay.md#生成玩家)
     * 5.1.14 捡拾物品
     * 5.1.15 生成对象
     * 5.1.16 生成生物
@@ -178,21 +178,21 @@ Minecraft 协议
     * 5.1.16 Spawn Mob                //brainbush[完成]
     * 5.1.17 Spawn Painting           //brainbush[完成]
     * 5.1.18 Spawn Experience Orb     //brainbush[完成]
-    * 5.1.19 Entity Velocity
-    * 5.1.20 Destroy Entities
-    * 5.1.21 Entity
-    * 5.1.22 Entity Relative Move
-    * 5.1.23 Entity Look
-    * 5.1.24 Entity Look and Relative Move
-    * 5.1.25 Entity Teleport
-    * 5.1.26 Entity Head Look
-    * 5.1.27 Entity Status
-    * 5.1.28 Attach Entity
-    * 5.1.29 Entity Metadata
-    * 5.1.30 Entity Effect
-    * 5.1.31 Remove Entity Effect
-    * 5.1.32 Set Experience
-    * 5.1.33 Entity Properties
+    * 5.1.19 Entity Velocity          //brainbush[完成]
+    * 5.1.20 Destroy Entities         //brainbush[完成]
+    * 5.1.21 Entity                   //brainbush[完成]
+    * 5.1.22 Entity Relative Move     //brainbush[完成]
+    * 5.1.23 Entity Look              //brainbush[完成]
+    * 5.1.24 Entity Look and Relative Move  //brainbush[完成]
+    * 5.1.25 Entity Teleport          //brainbush[完成]
+    * 5.1.26 Entity Head Look         //brainbush[完成]
+    * 5.1.27 Entity Status            //brainbush[完成]
+    * 5.1.28 Attach Entity            //brainbush[完成]
+    * 5.1.29 Entity Metadata          //brainbush[完成]
+    * 5.1.30 Entity Effect            //brainbush[完成]
+    * 5.1.31 Remove Entity Effect     //brainbush[完成]
+    * 5.1.32 Set Experience           //brainbush[完成]
+    * 5.1.33 Entity Properties        //brainbush[完成]
     * 5.1.34 Chunk Data
     * 5.1.35 Multi Block Change
     * 5.1.36 Block Change
