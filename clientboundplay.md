@@ -596,7 +596,7 @@
   <tr>
     <td>Metadata</td>
     <td>Metadata</td>
-    <td>The client will crash if no metadata is sent</td>
+    <td>如果没有metadata发送客户端将崩溃</td>
   </tr>
 </table>
 
