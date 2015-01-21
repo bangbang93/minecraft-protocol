@@ -598,7 +598,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td>游戏</td>
       <td>客户端</td>
       <td>Entity ID</td>
-      <td></td>
+      <td>VarInt</td>
       <td>VarInt</td>
       <td>玩家的实体ID</td>
    </tr>
@@ -607,7 +607,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Player UUID</td>
-      <td></td>
+      <td>UUID</td>
       <td>UUID</td>
       <td>玩家的UUID</td>
    </tr>
@@ -616,7 +616,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>X</td>
-      <td></td>
+      <td>Int</td>
       <td>Int</td>
       <td>Player X as a Fixed-Point number</td>
    </tr>
@@ -625,7 +625,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Y</td>
-      <td></td>
+      <td>Int</td>
       <td>Int</td>
       <td>Player X as a Fixed-Point number</td>
    </tr>
@@ -634,7 +634,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Z</td>
-      <td></td>
+      <td>Int</td>
       <td>Int</td>
       <td>Player X as a Fixed-Point number</td>
    </tr>
@@ -643,7 +643,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Yaw</td>
-      <td></td>
+      <td>Byte</td>
       <td>Byte</td>
       <td>玩家的方向的压缩字节</td>
    </tr>
@@ -652,7 +652,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Pitch</td>
-      <td></td>
+      <td>Byte</td>
       <td>Byte</td>
       <td>玩家的方向的压缩字节</td>
    </tr>
@@ -661,7 +661,7 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Current Item</td>
-      <td></td>
+      <td>Short</td>
       <td>Short</td>
       <td>玩家当前所拿的物体。注意这个当为0意为“没有物体”，不像在其他包中所用的-1那样。负数值将导致客户端崩溃</td>
    </tr>
@@ -670,9 +670,12 @@ Servers can, however, safely spawn player entities for players not in visible ra
       <td></td>
       <td></td>
       <td>Metadata</td>
-      <td></td>
+      <td>Metadata</td>
       <td>Metadata</td>
       <td>如果没有metadata发送客户端将崩溃</td>
+   </tr>
+   <tr>
+      <td></td>
    </tr>
 </table>
 
