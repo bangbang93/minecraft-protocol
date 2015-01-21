@@ -480,8 +480,8 @@
    </tr>
    <tr>
       <td>0x0A</td>
-      <td>Play</td>
-      <td>Client</td>
+      <td>游戏</td>
+      <td>客户端</td>
       <td>Entity ID</td>
       <td>VarInt</td>
       <td>玩家ID</td>
@@ -498,3 +498,79 @@
       <td></td>
    </tr>
 </table>
+
+##动作
+发送任何一个实体都将改变动作。
+<table>
+   <tr>
+      <td>包标识符</td>
+      <td>类别</td>
+      <td>绑定到</td>
+      <td>字段名</td>
+      <td>字段类别</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>0x0B</td>
+      <td>游戏</td>
+      <td>客户端</td>
+      <td>Entity ID</td>
+      <td>VarInt</td>
+      <td>玩家ID</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Animation</td>
+      <td>Unsigned Byte</td>
+      <td>动作ID</td>
+   </tr>
+   <tr>   </tr>
+</table>
+
+动作ID可以为以下值：
+
+<table>
+   <tr>
+      <td>ID</td>
+      <td>动作</td>
+   </tr>
+   <tr>
+      <td>0</td>
+      <td>挥手</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td>伤害动作</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td>离开床</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td>吃食物</td>
+   </tr>
+   <tr>
+      <td>4</td>
+      <td>Critical effect</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td>Magic critical effect</td>
+   </tr>
+   <tr>
+      <td>102</td>
+      <td>(未知）</td>
+   </tr>
+   <tr>
+      <td>104</td>
+      <td>蹲下</td>
+   </tr>
+   <tr>
+      <td>105</td>
+      <td>起立</td>
+   </tr>
+</table>
+
