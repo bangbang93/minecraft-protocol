@@ -338,109 +338,65 @@
 
      <Dinnerbone> It's a bitfield, X/Y/Z/Y_ROT/X_ROT. If X is set, the x value is relative and not absolute.
 
-
 <table>
-   <tr>
-      <td>包标识符</td>
-      <td>类别</td>
-      <td>绑定到</td>
-      <td>字段名</td>
-      <td>字段类别</td>
-      <td>说明</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td>0x08</td>
-      <td>游戏</td>
-      <td>客户端</td>
-      <td>X</td>
-      <td>Double</td>
-      <td>绝对/相对坐标</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Y</td>
-      <td>Double</td>
-      <td>绝对/相对坐标</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Z</td>
-      <td>Double</td>
-      <td>绝对/相对坐标</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Yaw</td>
-      <td>Float</td>
-      <td>X轴上的绝对/相对方向，角度计</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Pitch</td>
-      <td>Float</td>
-      <td>Y轴上的绝对/相对方向，角度计</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Flags</td>
-      <td>Byte</td>
-      <td>X</td>
-      <td>0x01</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Y</td>
-      <td>0x02</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Z</td>
-      <td>0x04</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Y_ROT</td>
-      <td>0x08</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>X_ROT</td>
-      <td>0x10</td>
-   </tr>
-   <tr>
-   </tr>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th colspan="2">Notes</th>
+  </tr>
+  <tr>
+    <td rowspan="10">0x08</td>
+    <td rowspan="10">游戏</td>
+    <td rowspan="10">客户端</td>
+    <td>X</td>
+    <td>Double</td>
+    <td colspan="2">绝对/相对坐标</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Double</td>
+    <td colspan="2">绝对/相对坐标</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Double</td>
+    <td colspan="2">绝对/相对坐标</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Float</td>
+    <td colspan="2">X轴上的绝对/相对方向，角度计</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Float</td>
+    <td colspan="2">Y轴上的绝对/相对方向，角度计</td>
+  </tr>
+  <tr>
+    <td rowspan="5">Flags</td>
+    <td rowspan="5">Byte</td>
+    <td>X</td>
+    <td>0x01</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>0x02</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>0x04</td>
+  </tr>
+  <tr>
+    <td>Y_ROT</td>
+    <td>0x08</td>
+  </tr>
+  <tr>
+    <td>X_ROT</td>
+    <td>0x10</td>
+  </tr>
 </table>
 
 ##更换手持物品
@@ -586,100 +542,63 @@
 在这个示例UUID,xxxxxxxx-xxxx-Yxxx-xxxx-xxxxxxxxxxxx中，UUID版本是通过Y来指定的。所以对于UUID v3来说，Y的值一直都为3；对UUID v2来说，Y的值一直为2。
 
 <table>
-   <tr>
-      <td>包标识符</td>
-      <td>类别</td>
-      <td>绑定到</td>
-      <td>字段名</td>
-      <td>字段类别</td>
-      <td>说明</td>
-      <td></td>
-   </tr>
-   <tr>
-      <td>0x0C</td>
-      <td>游戏</td>
-      <td>客户端</td>
-      <td>Entity ID</td>
-      <td>VarInt</td>
-      <td>VarInt</td>
-      <td>玩家的实体ID</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Player UUID</td>
-      <td>UUID</td>
-      <td>UUID</td>
-      <td>玩家的UUID</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>X</td>
-      <td>Int</td>
-      <td>Int</td>
-      <td>Player X as a Fixed-Point number</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Y</td>
-      <td>Int</td>
-      <td>Int</td>
-      <td>Player X as a Fixed-Point number</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Z</td>
-      <td>Int</td>
-      <td>Int</td>
-      <td>Player X as a Fixed-Point number</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Yaw</td>
-      <td>Byte</td>
-      <td>Byte</td>
-      <td>玩家的方向的压缩字节</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Pitch</td>
-      <td>Byte</td>
-      <td>Byte</td>
-      <td>玩家的方向的压缩字节</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Current Item</td>
-      <td>Short</td>
-      <td>Short</td>
-      <td>玩家当前所拿的物体。注意这个当为0意为“没有物体”，不像在其他包中所用的-1那样。负数值将导致客户端崩溃</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Metadata</td>
-      <td>Metadata</td>
-      <td>Metadata</td>
-      <td>如果没有metadata发送客户端将崩溃</td>
-   </tr>
-   <tr>
-   </tr>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="9">0x0C</td>
+    <td rowspan="9">Play</td>
+    <td rowspan="9">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>玩家的实体ID</td>
+  </tr>
+  <tr>
+    <td>Player UUID</td>
+    <td>UUID</td>
+    <td>玩家的UUID</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Int</td>
+    <td>Player X as a Fixed-Point number</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Int</td>
+    <td>Player X as a Fixed-Point number</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Int</td>
+    <td>Player X as a Fixed-Point number</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>玩家的方向的压缩字节</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>玩家的方向的压缩字节</td>
+  </tr>
+  <tr>
+    <td>Current Item</td>
+    <td>Short</td>
+    <td>玩家当前所拿的物体。注意这个当为0意为“没有物体”，不像在其他包中所用的-1那样。负数值将导致客户端崩溃。</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Metadata</td>
+    <td>The client will crash if no metadata is sent</td>
+  </tr>
 </table>
-
 
 **如果没有metadata发送客户端将崩溃**
 
