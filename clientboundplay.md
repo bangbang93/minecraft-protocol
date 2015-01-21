@@ -681,3 +681,245 @@
 
 
 **如果没有metadata发送客户端将崩溃**
+
+##捡拾物品
+服务器将在玩家捡起一个落在地上的物品时发出这个包。 -这个包的意义是向你展示这个东西飞向你。它不会摧毁客户端实体占用的的内存。 而且它不会加到你的背包中。服务器只会在每次客户端发送的玩家位置坐标[以及玩家的位置和所看的方向]发生改变后检查物品是否捡起。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x0D</td>
+    <td rowspan="2">Play</td>
+    <td rowspan="2">Client</td>
+    <td>Collected Entity ID</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Collector Entity ID</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+</table>
+
+##生成对象
+当服务端生成一个实体/交通工具时发送。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="8">0x0E</td>
+    <td rowspan="8">Play</td>
+    <td rowspan="8">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>对象的实体ID</td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>Byte</td>
+    <td>对象的类型（详情见对象）</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Int</td>
+    <td>X坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Int</td>
+    <td>Y坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Int</td>
+    <td>Z坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>偏航值以2p/256记</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>仰角值以2p/256记</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>Object Data</td>
+    <td></td>
+  </tr>
+</table>
+
+##生成生物
+当服务端生成一个生物实体的时候发送。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="12">0x0F</td>
+    <td rowspan="12">Play</td>
+    <td rowspan="12">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>Unsigned Byte</td>
+    <td>生物类型，具体查看生物</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Int</td>
+    <td>X坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Int</td>
+    <td>Y坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Int</td>
+    <td>Z坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>偏航值以2p/256记</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>仰角值以2p/256记</td>
+  </tr>
+  <tr>
+    <td>Head Pitch</td>
+    <td>Byte</td>
+    <td>仰角值以2p/256记</td>
+  </tr>
+  <tr>
+    <td>Velocity X</td>
+    <td>Short</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Velocity Y</td>
+    <td>Short</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Velocity Z</td>
+    <td>Short</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Metadata</td>
+    <td></td>
+  </tr>
+</table>
+
+##生成画
+这个包含有坐标，名称，以及画的类型。
+计算一个画框的中心可以这样：指定一个(宽x高)的格子，以(0,0)点作为左上角，中心则为(max(0, 宽 / 2 - 1), 高 / 2)。例如：2x1 (1, 0) 4x4 (1, 2)
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x10</td>
+    <td rowspan="4">Play</td>
+    <td rowspan="4">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td>String</td>
+    <td>画框名，最大为13</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>Position</td>
+    <td>坐标中心</td>
+  </tr>
+  <tr>
+    <td>Direction</td>
+    <td>Unsigned Byte</td>
+    <td>画框面向的方向(0 -z, 1 -x, 2 +z, 3 +x)</td>
+  </tr>
+</table>
+
+##生成经验球
+生成一个或多个经验球。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="5">0x11</td>
+    <td rowspan="5">Play</td>
+    <td rowspan="5">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Int</td>
+    <td>X坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Int</td>
+    <td>Y坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Int</td>
+    <td>Z坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Count</td>
+    <td>Short</td>
+    <td>一次收集到将获得的经验数量</td>
+  </tr>
+</table>
+
