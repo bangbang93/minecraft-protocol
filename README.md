@@ -34,8 +34,8 @@ Minecraft 协议
     * 5.1.13 生成玩家
     * 5.1.14 捡拾物品
     * 5.1.15 生成对象
-    * 5.1.16 生成怪物
-    * 5.1.17 生成画
+    * 5.1.16 生成生物
+    * 5.1.17 生成画框
     * 5.1.18 生成经验球
     * 5.1.19 实体速率
     * 5.1.20 破坏实体
@@ -173,11 +173,11 @@ Minecraft 协议
     * 5.1.11 Use Bed                  //brainbush[完成]
     * 5.1.12 Animation                //brainbush[完成]
     * 5.1.13 Spawn Player             //brainbush[完成]
-    * 5.1.14 Collect Item
-    * 5.1.15 Spawn Object
-    * 5.1.16 Spawn Mob
-    * 5.1.17 Spawn Painting
-    * 5.1.18 Spawn Experience Orb
+    * 5.1.14 Collect Item             //brainbush[完成]
+    * 5.1.15 Spawn Object             //brainbush[完成]
+    * 5.1.16 Spawn Mob                //brainbush[完成]
+    * 5.1.17 Spawn Painting           //brainbush[完成]
+    * 5.1.18 Spawn Experience Orb     //brainbush[完成]
     * 5.1.19 Entity Velocity
     * 5.1.20 Destroy Entities
     * 5.1.21 Entity
