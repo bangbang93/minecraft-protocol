@@ -438,7 +438,6 @@
       <td>0x10</td>
    </tr>
    <tr>
-      <td></td>
    </tr>
 </table>
 
@@ -463,5 +462,39 @@
       <td>玩家所选择的物品槽(0-8)</td>
    </tr>
    <tr>
+   </tr>
+</table>
+
+##床的使用
+这个数据包将告诉玩家上床了。
+有匹配的实体ID的客户端将会进入床模式。
+这个数据包将发送给所有附近的玩家（包括已经在床上的玩家）
+<table>
+   <tr>
+      <td>包标识符</td>
+      <td>类别</td>
+      <td>绑定到</td>
+      <td>字段名</td>
+      <td>字段类别</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>0x0A</td>
+      <td>Play</td>
+      <td>Client</td>
+      <td>Entity ID</td>
+      <td>VarInt</td>
+      <td>玩家ID</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Location</td>
+      <td>Position</td>
+      <td>床头部分的方块的所在位置</td>
+   </tr>
+   <tr>
+      <td></td>
    </tr>
 </table>
