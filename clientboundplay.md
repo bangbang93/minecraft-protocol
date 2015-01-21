@@ -409,7 +409,7 @@
       <td>绑定到</td>
       <td>字段名</td>
       <td>字段类别</td>
-      <td>说明</td>
+      <td>备注</td>
    </tr>
    <tr>
       <td>0x09</td>
@@ -434,7 +434,7 @@
       <td>绑定到</td>
       <td>字段名</td>
       <td>字段类别</td>
-      <td>说明</td>
+      <td>备注</td>
    </tr>
    <tr>
       <td>0x0A</td>
@@ -466,7 +466,7 @@
       <td>绑定到</td>
       <td>字段名</td>
       <td>字段类别</td>
-      <td>说明</td>
+      <td>备注</td>
    </tr>
    <tr>
       <td>0x0B</td>
@@ -548,7 +548,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="9">0x0C</td>
@@ -612,7 +612,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="2">0x0D</td>
@@ -639,7 +639,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="8">0x0E</td>
@@ -696,7 +696,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="12">0x0F</td>
@@ -774,7 +774,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="4">0x10</td>
@@ -811,7 +811,7 @@
     <th>绑定到</th>
     <th>字段名</th>
     <th>字段类别</th>
-    <th>说明</th>
+    <th>备注</th>
   </tr>
   <tr>
     <td rowspan="5">0x11</td>
