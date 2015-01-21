@@ -169,10 +169,10 @@ Minecraft 协议
     * 5.1.7 Update Health       // KBlackcn  [完成]
     * 5.1.8 Respawn             // KBlackcn  [完成]
     * 5.1.9 Player Position And Look  //brainbush[完成]
-    * 5.1.10 Held Item Change         //brainbush[翻译]
-    * 5.1.11 Use Bed                  //brainbush[待译]
-    * 5.1.12 Animation                //brainbush[待译]
-    * 5.1.13 Spawn Player
+    * 5.1.10 Held Item Change         //brainbush[完成]
+    * 5.1.11 Use Bed                  //brainbush[完成]
+    * 5.1.12 Animation                //brainbush[完成]
+    * 5.1.13 Spawn Player             //brainbush[完成]
     * 5.1.14 Collect Item
     * 5.1.15 Spawn Object
     * 5.1.16 Spawn Mob
