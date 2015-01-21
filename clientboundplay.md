@@ -552,8 +552,8 @@
   </tr>
   <tr>
     <td rowspan="9">0x0C</td>
-    <td rowspan="9">Play</td>
-    <td rowspan="9">Client</td>
+    <td rowspan="9">游戏</td>
+    <td rowspan="9">客户端</td>
     <td>Entity ID</td>
     <td>VarInt</td>
     <td>玩家的实体ID</td>
@@ -596,11 +596,11 @@
   <tr>
     <td>Metadata</td>
     <td>Metadata</td>
-    <td>如果没有metadata发送客户端将崩溃</td>
+    <td>如果没有元数据发送客户端将崩溃</td>
   </tr>
 </table>
 
-**如果没有metadata发送客户端将崩溃**
+**如果没有元数据发送客户端将崩溃**
 
 ##捡拾物品
 服务器将在玩家捡起一个落在地上的物品时发出这个包。 -这个包的意义是向你展示这个东西飞向你。它不会摧毁客户端实体占用的的内存。 而且它不会加到你的背包中。服务器只会在每次客户端发送的玩家位置坐标[以及玩家的位置和所看的方向]发生改变后检查物品是否捡起。
@@ -616,8 +616,8 @@
   </tr>
   <tr>
     <td rowspan="2">0x0D</td>
-    <td rowspan="2">Play</td>
-    <td rowspan="2">Client</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
     <td>Collected Entity ID</td>
     <td>VarInt</td>
     <td></td>
@@ -700,8 +700,8 @@
   </tr>
   <tr>
     <td rowspan="12">0x0F</td>
-    <td rowspan="12">Play</td>
-    <td rowspan="12">Client</td>
+    <td rowspan="12">游戏</td>
+    <td rowspan="12">客户端</td>
     <td>Entity ID</td>
     <td>VarInt</td>
     <td>实体ID</td>
@@ -778,8 +778,8 @@
   </tr>
   <tr>
     <td rowspan="4">0x10</td>
-    <td rowspan="4">Play</td>
-    <td rowspan="4">Client</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
     <td>Entity ID</td>
     <td>VarInt</td>
     <td>实体ID</td>
@@ -815,8 +815,8 @@
   </tr>
   <tr>
     <td rowspan="5">0x11</td>
-    <td rowspan="5">Play</td>
-    <td rowspan="5">Client</td>
+    <td rowspan="5">游戏</td>
+    <td rowspan="5">客户端</td>
     <td>Entity ID</td>
     <td>VarInt</td>
     <td>实体ID</td>
@@ -842,4 +842,544 @@
     <td>一次收集到将获得的经验数量</td>
   </tr>
 </table>
+
+##实体速率
+速度是以1/8000方块每刻（tick,1tick=50ms）；例如，-1343将会移动(-1343 / 8000) = −0.167875每刻（或-3,3575方块每秒）
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x12</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Velocity X</td>
+    <td>Short</td>
+    <td>X轴上的速度</td>
+  </tr>
+  <tr>
+    <td>Velocity Y</td>
+    <td>Short</td>
+    <td>Y轴上的速度</td>
+  </tr>
+  <tr>
+    <td>Velocity Z</td>
+    <td>Short</td>
+    <td>Z轴上的速度</td>
+  </tr>
+</table>
+##破坏实体
+服务端在一列实体被客户端破坏时发送。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x13</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Count</td>
+    <td>VarInt</td>
+    <td>列表长度</td>
+  </tr>
+  <tr>
+    <td>Entity IDs</td>
+    <td>Array of VarInt</td>
+    <td>破坏的实体的列表</td>
+  </tr>
+</table>
+##实体
+大多数与实体相关的数据包是这个包的一个小类别。当从服务器发送到客户端时，它将初始化实体。
+对玩家实体而言，这个包或其他任何移动/改变视点包都是每一刻(tick)会发送的。 所以这个包存在的基本意义是服务器收到实体的包后才会移动/改变视点。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x14</td>
+    <td>游戏</td>
+    <td>客户都uan</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+</table>
+##实体相对运动
+服务器将会在实体移动距离小于4个方块时发送；如果一个实体移动距离大于4个方块，服务器将会发送实体传送而不是实体相对移动。
+这个数据包允许任意方向不超过四个方向的移动，因为字节的范围是从-128到127。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="5">0x15</td>
+    <td rowspan="5">Play</td>
+    <td rowspan="5">Client</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>DX</td>
+    <td>Byte</td>
+    <td>X方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>DY</td>
+    <td>Byte</td>
+    <td>Y方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>DZ</td>
+    <td>Byte</td>
+    <td>Z方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>On Ground</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+</table>
+
+##实体视点
+这个数据包服务器在实体转向时发送。例如：偏航(yaw)字段值为64意为转90度。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x16</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>X轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>Y轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>On Ground</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+</table>
+##实体相对移动并且视点改变
+这个数据包服务器在实体旋转且移动的时候发送。由于字节的范围限制在-128到127， 偏移量为定点小数，这个数据包允许任意方向最多四个方块距离的移动 (-128/32 == -4)。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="7">0x17</td>
+    <td rowspan="7">游戏</td>
+    <td rowspan="7">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>DX</td>
+    <td>Byte</td>
+    <td>X方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>DY</td>
+    <td>Byte</td>
+    <td>Y方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>DZ</td>
+    <td>Byte</td>
+    <td>Z方向移动的定点小数值</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>X轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>Y轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>On Ground</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+</table>
+##实体传送
+这个数据包服务器在实体移动距离超过四个方块时发送。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="7">0x18</td>
+    <td rowspan="7">游戏</td>
+    <td rowspan="7">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Int</td>
+    <td>X坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Int</td>
+    <td>Y坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Int</td>
+    <td>Z坐标值的定点小数</td>
+  </tr>
+  <tr>
+    <td>Yaw</td>
+    <td>Byte</td>
+    <td>X轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Byte</td>
+    <td>Y轴旋转角度在360度中的比例</td>
+  </tr>
+  <tr>
+    <td>On Ground</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+</table>
+##实体头部移动
+改变实体面朝方向。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x19</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Head Yaw</td>
+    <td>Byte</td>
+    <td>头偏航值以2p/256记</td>
+  </tr>
+</table>
+##实体状态
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x1A</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>Int</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Entity Status</td>
+    <td>Byte</td>
+    <td>见下表</td>
+  </tr>
+</table>
+
+|实体状态|意义|
+|-----|---------------------------------|
+|0	|是否有东西与活动实体有联系？
+|1	|是否有东西与玩家实体有联系？
+|2	|活动实体受伤害
+|3	|活动实体死亡
+|4	|铁傀儡挥手
+|6	|狼/豹猫/马交配 - 生成“心形”颗粒
+|7	|狼/豹猫/马被驯服 - 生成 "烟雾" 颗粒
+|8	|狼抖去水 - 触发摇头动画
+|9	|(对自己)吃的动作被服务器接受
+|10	|羊吃草
+|10	|播放TNT矿车点燃的声音
+|11	|铁傀儡拿着玫瑰花
+|12	|村民交配 - 生成“心形”颗粒
+|13	|显示颗粒来表示村民很愤怒而且准备复仇
+|14	|在村民附近显示“高兴”颗粒
+|15	|女巫动作 - 生成 "魔法" 颗粒
+|16	|播放僵尸变成村民的声音
+|17	|烟花爆炸
+|18	|动物相爱 (准备交配) - 生成“心形”颗粒
+|19	|重置鱿鱼方向
+|20	|生成爆炸粒子 - 一部分活动实体才有此效果
+|21	|播放“守护的”声音 - 对所有实体都有效
+|22	|启用玩家的调试屏幕
+|23	|禁用玩家的调试屏幕
+
+
+##依附实体
+这个数据包在玩家衣服于一个实体时发送。（例如矿车）
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x1B</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>Entity ID</td>
+    <td>Int</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Vehicle ID</td>
+    <td>Int</td>
+    <td>交通工具的实体ID</td>
+  </tr>
+  <tr>
+    <td>Leash</td>
+    <td>Boolean</td>
+    <td>如果为true将绑定实体于交通工具上</td>
+  </tr>
+</table>
+##实体元数据
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x1C</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Metadata</td>
+    <td></td>
+  </tr>
+</table>
+
+##实体药水效果
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="5">0x1D</td>
+    <td rowspan="5">游戏</td>
+    <td rowspan="5">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Effect ID</td>
+    <td>Byte</td>
+    <td>[看这张表](http://minecraft.gamepedia.com/Status_effect#List_of_effects)</td>
+  </tr>
+  <tr>
+    <td>Amplifier</td>
+    <td>Byte</td>
+    <td>Notch的客户端显示药水效果等级为 Amplifier + 1</td>
+  </tr>
+  <tr>
+    <td>Duration</td>
+    <td>VarInt</td>
+    <td>秒</td>
+  </tr>
+  <tr>
+    <td>Hide Particles</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+</table>
+##移除实体药水效果
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x1E</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Effect ID</td>
+    <td>Byte</td>
+    <td></td>
+  </tr>
+</table>
+##设置经验
+服务器在客户端应该更改经验等级的时候发送。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x1F</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>Experience bar</td>
+    <td>Float</td>
+    <td>0到1之间</td>
+  </tr>
+  <tr>
+    <td>Level</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Total Experience</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+</table>
+##实体设置
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x20</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Count</td>
+    <td>Int</td>
+    <td>后面的数组的长度</td>
+  </tr>
+  <tr>
+    <td>Properties</td>
+    <td>Array of Property Data</td>
+    <td></td>
+  </tr>
+</table>
+**属性信息表**结构如下：
+| 字段名      | 字段类型               | 备注                                                  |
+|-------------|------------------------|-------------------------------------------------------|
+| Key         | String                 |                                                       |
+| Value       | Double                 |                                                       |
+| List Length | VarInt                 | Number of list elements that follow.                  |
+| Modifiers   | Array of Modifier Data | http://www.minecraftwiki.net/wiki/Attribute#Modifiers |
+
+已知键值：
+| 键                          | 默认        | 最小 | 最大            | 标签                        |
+|-----------------------------|-------------|------|-----------------|-----------------------------|
+| generic.maxHealth           | 20          | 0    | Double.MaxValue | Max Health                  |
+| generic.followRange         | 32          | 0    | 2048            | Follow Range                |
+| generic.knockbackResistance | 0           | 0    | 1               | Knockback Resistance        |
+| generic.movementSpeed       | 0.699999988 | 0    | Double.MaxValue | Movement Speed              |
+| generic.attackDamage        | 2           | 0    | Double.MaxValue |                             |
+| horse.jumpStrength          | 0.7         | 0    | 2               | Jump Strength               |
+| zombie.spawnReinforcements  | 0           | 0    | 1               | Spawn Reinforcements Chance |
+
+**变化数据表**的结构：
+| 字段名    | 字段结构        | 备注 |
+|-----------|-----------------|------|
+| UUID      | 128-bit integer |      |
+| Amount    | Double          |      |
+| Operation | Byte            |      |
 
