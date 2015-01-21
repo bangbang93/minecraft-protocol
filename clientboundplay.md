@@ -576,7 +576,7 @@
 
 ##生成玩家
 这个包会在玩家到达可见区域发送，**不是**在玩家加入时发送。
-Servers can, however, safely spawn player entities for players not in visible range. The client appears to handle it correctly.
+服务器可以，然而，安全的不在可见范围内生成玩家实体。 客户端将会正确控制它。
 当服务器的online-mode（正版模式），UUID必须有效而且要有有效的皮肤，在离线模式下需要UUID v3。
 
       <+Grum> i will never confirm this as a feature you know that :)
