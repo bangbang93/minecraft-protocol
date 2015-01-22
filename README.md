@@ -60,7 +60,7 @@ Minecraft 协议
     * 5.1.39 [地图区块传送](clientboundplay.md#地图区块传送)
     * 5.1.40 [爆炸](clientboundplay.md#爆炸)
     * 5.1.41 [效果](clientboundplay.md#效果)
-      * 5.1.41.1 各种效果
+      * 5.1.41.1 [各种效果](clientboundplay.md#各种效果)
     * 5.1.42 [音效](clientboundplay.md#音效)
     * 5.1.43 颗粒
     * 5.1.44 修改游戏状态
