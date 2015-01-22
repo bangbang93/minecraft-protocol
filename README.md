@@ -27,41 +27,41 @@ Minecraft 协议
     * 5.1.6 [出生点](clientboundplay.md#出生点)
     * 5.1.7 [更新生命值](clientboundplay.md#更新生命值)
     * 5.1.8 [重生](clientboundplay.md#重生)
-    * 5.1.9 玩家坐标和视点
-    * 5.1.10 更换手持物品
-    * 5.1.11 床的使用
-    * 5.1.12 动作
-    * 5.1.13 生成玩家
-    * 5.1.14 捡拾物品
-    * 5.1.15 生成对象
-    * 5.1.16 生成怪物
-    * 5.1.17 生成画
-    * 5.1.18 生成经验球
-    * 5.1.19 实体速率
-    * 5.1.20 破坏实体
-    * 5.1.21 实体
-    * 5.1.22 实体相对移动
-    * 5.1.23 实体视点
-    * 5.1.24 实体相对移动并且视点改变
-    * 5.1.25 实体传送
-    * 5.1.26 实体头部移动
-    * 5.1.27 实体状态
-    * 5.1.28 依附实体
-    * 5.1.29 实体元数据
-    * 5.1.30 实体药水效果
-    * 5.1.31 移除实体药水效果
-    * 5.1.32 设置经验
-    * 5.1.33 实体设置
-    * 5.1.34 区块数据
-    * 5.1.35 多个方块更新
-    * 5.1.36 方块更新
-    * 5.1.37 方块表现
-    * 5.1.38 破坏方块动画
-    * 5.1.39 地图区块传送
-    * 5.1.40 爆炸
-    * 5.1.41 药水效果
-      * 5.1.41.1 各种药水效果
-    * 5.1.42 音效
+    * 5.1.9 [玩家坐标和视点](clientboundplay.md#玩家坐标和视点)
+    * 5.1.10 [更换手持物品](clientboundplay.md#更换手持物品)
+    * 5.1.11 [床的使用](clientboundplay.md#床的使用)
+    * 5.1.12 [动作](clientboundplay.md#动作)
+    * 5.1.13 [生成玩家](clientboundplay.md#生成玩家)
+    * 5.1.14 [捡拾物品](clientboundplay.md#捡拾物品)
+    * 5.1.15 [生成对象](clientboundplay.md#生成对象)
+    * 5.1.16 [生成生物](clientboundplay.md#生成生物)
+    * 5.1.17 [生成画框](clientboundplay.md#生成画框)
+    * 5.1.18 [生成经验球](clientboundplay.md#生成经验球)
+    * 5.1.19 [实体速率](clientboundplay.md#实体速率)
+    * 5.1.20 [破坏实体](clientboundplay.md#破坏实体)
+    * 5.1.21 [实体](clientboundplay.md#实体)
+    * 5.1.22 [实体相对移动](clientboundplay.md#实体相对移动)
+    * 5.1.23 [实体视点](clientboundplay.md#实体视点)
+    * 5.1.24 [实体相对移动并且视点改变](clientboundplay.md#实体相对移动并且视点改变)
+    * 5.1.25 [实体传送](clientboundplay.md#实体传送)
+    * 5.1.26 [实体头部移动](clientboundplay.md#实体头部移动)
+    * 5.1.27 [实体状态](clientboundplay.md#实体状态)
+    * 5.1.28 [依附实体](clientboundplay.md#依附实体)
+    * 5.1.29 [实体元数据](clientboundplay.md#实体元数据)
+    * 5.1.30 [实体药水效果](clientboundplay.md#实体药水效果)
+    * 5.1.31 [移除实体药水效果](clientboundplay.md#移除实体药水效果)
+    * 5.1.32 [设置经验](clientboundplay.md#设置经验)
+    * 5.1.33 [实体设置](clientboundplay.md#实体设置)
+    * 5.1.34 [区块数据](clientboundplay.md#区块数据)
+    * 5.1.35 [多个方块更新](clientboundplay.md#多个方块更新)
+    * 5.1.36 [方块更新](clientboundplay.md#方块更新)
+    * 5.1.37 [方块表现](clientboundplay.md#方块表现)
+    * 5.1.38 [破坏方块动画](clientboundplay.md#破坏方块动画)
+    * 5.1.39 [地图区块传送](clientboundplay.md#地图区块传送)
+    * 5.1.40 [爆炸](clientboundplay.md#爆炸)
+    * 5.1.41 [效果](clientboundplay.md#效果)
+      * 5.1.41.1 各种效果
+    * 5.1.42 [音效](clientboundplay.md#音效)
     * 5.1.43 颗粒
     * 5.1.44 修改游戏状态
     * 5.1.45 生成全局实体
@@ -168,41 +168,41 @@ Minecraft 协议
     * 5.1.6 Spawn Position      // KBlackcn  [完成]
     * 5.1.7 Update Health       // KBlackcn  [完成]
     * 5.1.8 Respawn             // KBlackcn  [完成]
-    * 5.1.9 Player Position And Look
-    * 5.1.10 Held Item Change
-    * 5.1.11 Use Bed
-    * 5.1.12 Animation
-    * 5.1.13 Spawn Player
-    * 5.1.14 Collect Item
-    * 5.1.15 Spawn Object
-    * 5.1.16 Spawn Mob
-    * 5.1.17 Spawn Painting
-    * 5.1.18 Spawn Experience Orb
-    * 5.1.19 Entity Velocity
-    * 5.1.20 Destroy Entities
-    * 5.1.21 Entity
-    * 5.1.22 Entity Relative Move
-    * 5.1.23 Entity Look
-    * 5.1.24 Entity Look and Relative Move
-    * 5.1.25 Entity Teleport
-    * 5.1.26 Entity Head Look
-    * 5.1.27 Entity Status
-    * 5.1.28 Attach Entity
-    * 5.1.29 Entity Metadata
-    * 5.1.30 Entity Effect
-    * 5.1.31 Remove Entity Effect
-    * 5.1.32 Set Experience
-    * 5.1.33 Entity Properties
-    * 5.1.34 Chunk Data
-    * 5.1.35 Multi Block Change
-    * 5.1.36 Block Change
-    * 5.1.37 Block Action
-    * 5.1.38 Block Break Animation
-    * 5.1.39 Map Chunk Bulk
-    * 5.1.40 Explosion
-    * 5.1.41 Effect
-      * 5.1.41.1 Effects
-    * 5.1.42 Sound Effect
+    * 5.1.9 Player Position And Look  //brainbush[完成]
+    * 5.1.10 Held Item Change         //brainbush[完成]
+    * 5.1.11 Use Bed                  //brainbush[完成]
+    * 5.1.12 Animation                //brainbush[完成]
+    * 5.1.13 Spawn Player             //brainbush[完成]
+    * 5.1.14 Collect Item             //brainbush[完成]
+    * 5.1.15 Spawn Object             //brainbush[完成]
+    * 5.1.16 Spawn Mob                //brainbush[完成]
+    * 5.1.17 Spawn Painting           //brainbush[完成]
+    * 5.1.18 Spawn Experience Orb     //brainbush[完成]
+    * 5.1.19 Entity Velocity          //brainbush[完成]
+    * 5.1.20 Destroy Entities         //brainbush[完成]
+    * 5.1.21 Entity                   //brainbush[完成]
+    * 5.1.22 Entity Relative Move     //brainbush[完成]
+    * 5.1.23 Entity Look              //brainbush[完成]
+    * 5.1.24 Entity Look and Relative Move  //brainbush[完成]
+    * 5.1.25 Entity Teleport          //brainbush[完成]
+    * 5.1.26 Entity Head Look         //brainbush[完成]
+    * 5.1.27 Entity Status            //brainbush[完成]
+    * 5.1.28 Attach Entity            //brainbush[完成]
+    * 5.1.29 Entity Metadata          //brainbush[完成]
+    * 5.1.30 Entity Effect            //brainbush[完成]
+    * 5.1.31 Remove Entity Effect     //brainbush[完成]
+    * 5.1.32 Set Experience           //brainbush[完成]
+    * 5.1.33 Entity Properties        //brainbush[完成]
+    * 5.1.34 Chunk Data               //brainbush[完成]
+    * 5.1.35 Multi Block Change       //brainbush[完成]
+    * 5.1.36 Block Change             //brainbush[完成]
+    * 5.1.37 Block Action             //brainbush[完成]
+    * 5.1.38 Block Break Animation    //brainbush[完成]
+    * 5.1.39 Map Chunk Bulk          //brainbush[完成]
+    * 5.1.40 Explosion               //brainbush[完成]
+    * 5.1.41 Effect                  //brainbush[完成]
+      * 5.1.41.1 Effects             //brainbush[完成]
+    * 5.1.42 Sound Effect            //brainbush[完成]
     * 5.1.43 Particle
     * 5.1.44 Change Game State
     * 5.1.45 Spawn Global Entity
