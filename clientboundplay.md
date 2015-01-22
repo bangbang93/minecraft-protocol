@@ -2833,7 +2833,9 @@ notchian服务器在用户列表更新的时候发送（客户端的<tab>键列�
 
 ## 玩家能力
 后面的两个浮点数是用来分别表示玩家走路/飞行速度的， 第一个字节用来表示四个布尔值。
-这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1), 以及玩家是否处于创造模式 (1, bit 0).
+
+这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1),以及玩家是否处于创造模式 (1, bit 0).
+
 如需获得这些布尔值的信息， simply AND (&) the byte with 1,2,4 and 8 respectively, to get the 0 or 1 bitwise value. To set them OR (|) them with their repspective masks.
 <table>
   <tr>
