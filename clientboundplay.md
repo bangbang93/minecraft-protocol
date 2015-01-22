@@ -453,7 +453,6 @@
       <td>床头部分的方块的所在位置</td>
    </tr>
    <tr>
-      <td></td>
    </tr>
 </table>
 
@@ -1256,7 +1255,7 @@
   <tr>
     <td>Effect ID</td>
     <td>Byte</td>
-    <td>[看这张表](http://minecraft.gamepedia.com/Status_effect#List_of_effects)</td>
+    <td><a href="http://minecraft.gamepedia.com/Status_effect#List_of_effects">看这张表</td>
   </tr>
   <tr>
     <td>Amplifier</td>
@@ -1358,28 +1357,678 @@
   </tr>
 </table>
 **属性信息表**结构如下：
-| 字段名      | 字段类型               | 备注                                                  |
-|-------------|------------------------|-------------------------------------------------------|
-| Key         | String                 |                                                       |
-| Value       | Double                 |                                                       |
-| List Length | VarInt                 | Number of list elements that follow.                  |
-| Modifiers   | Array of Modifier Data | http://www.minecraftwiki.net/wiki/Attribute#Modifiers |
+<table>
+  <tr>
+    <th>字段名</th>
+    <th>字段类型</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>Key</td>
+    <td>String</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Value</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>List Length</td>
+    <td>VarInt</td>
+    <td>Number of list elements that follow.</td>
+  </tr>
+  <tr>
+    <td>Modifiers</td>
+    <td>Array of Modifier Data</td>
+    <td><a href="http://www.minecraftwiki.net/wiki/Attribute#Modifiers">http://www.minecraftwiki.net/wiki/Attribute#Modifiers</a>
+</td>
+  </tr>
+</table>
 
 已知键值：
-| 键                          | 默认        | 最小 | 最大            | 标签                        |
-|-----------------------------|-------------|------|-----------------|-----------------------------|
-| generic.maxHealth           | 20          | 0    | Double.MaxValue | Max Health                  |
-| generic.followRange         | 32          | 0    | 2048            | Follow Range                |
-| generic.knockbackResistance | 0           | 0    | 1               | Knockback Resistance        |
-| generic.movementSpeed       | 0.699999988 | 0    | Double.MaxValue | Movement Speed              |
-| generic.attackDamage        | 2           | 0    | Double.MaxValue |                             |
-| horse.jumpStrength          | 0.7         | 0    | 2               | Jump Strength               |
-| zombie.spawnReinforcements  | 0           | 0    | 1               | Spawn Reinforcements Chance |
-
+<table>
+  <tr>
+    <th>键</th>
+    <th>默认</th>
+    <th>最小</th>
+    <th>最大</th>
+    <th>标签</th>
+  </tr>
+  <tr>
+    <td>generic.maxHealth</td>
+    <td>20</td>
+    <td>0</td>
+    <td>Double.MaxValue</td>
+    <td>Max Health</td>
+  </tr>
+  <tr>
+    <td>generic.followRange</td>
+    <td>32</td>
+    <td>0</td>
+    <td>2048</td>
+    <td>Follow Range</td>
+  </tr>
+  <tr>
+    <td>generic.knockbackResistance</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>Knockback Resistance</td>
+  </tr>
+  <tr>
+    <td>generic.movementSpeed</td>
+    <td>0.699999988</td>
+    <td>0</td>
+    <td>Double.MaxValue</td>
+    <td>Movement Speed</td>
+  </tr>
+  <tr>
+    <td>generic.attackDamage</td>
+    <td>2</td>
+    <td>0</td>
+    <td>Double.MaxValue</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>horse.jumpStrength</td>
+    <td>0.7</td>
+    <td>0</td>
+    <td>2</td>
+    <td>Jump Strength</td>
+  </tr>
+  <tr>
+    <td>zombie.spawnReinforcements</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>Spawn Reinforcements Chance</td>
+  </tr>
+</table>
 **变化数据表**的结构：
-| 字段名    | 字段结构        | 备注 |
-|-----------|-----------------|------|
-| UUID      | 128-bit integer |      |
-| Amount    | Double          |      |
-| Operation | Byte            |      |
+<table>
+  <tr>
+    <th>字段名</th>
+    <th>字段结构</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>UUID</td>
+    <td>128-bit integer</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amount</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Operation</td>
+    <td>Byte</td>
+    <td></td>
+  </tr>
+</table>
+##区块数据
+区块不会由客户端自动卸载。如需卸载区块，发送含有 ground-up continuous=true 并且没有 16^3 区块的数据包（如primary bit mask=0）。服务器不会发送下界地图区块的光照信息，这使得客户端知道玩家正处于下界。你也可以通过主位掩码和发送的未压缩的字节数的数量来推断这些信息。
+请参阅：[SMP地图格式](http://wiki.vg/SMP_Map_Format)
 
+在1.8版本中的改变：
+
+ - 移除了数据值部分
+ - 移除了扩展ID部分
+ - 现在每个方块的id选择变成了一个无符号短整数（从小到大）
+ - 方块id现在相当于 (id << 4) | data
+ 
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0x21</td>
+    <td rowspan="6">游戏</td>
+    <td rowspan="6">客户端</td>
+    <td>Chunk X</td>
+    <td>Int</td>
+    <td>区块的X坐标</td>
+  </tr>
+  <tr>
+    <td>Chunk Z</td>
+    <td>Int</td>
+    <td>区块的Z坐标</td>
+  </tr>
+  <tr>
+    <td>Ground-Up continuous</td>
+    <td>Boolean</td>
+    <td>This is True if the packet represents all sections in this vertical column, where the primary bit map specifies exactly which sections are included, and which are air</td>
+  </tr>
+  <tr>
+    <td>Primary bit map</td>
+    <td>Unsigned Short</td>
+    <td>Bitmask为1时每个16x16x16选择区域的方块信息将以压缩后的信息呈现</td>
+  </tr>
+  <tr>
+    <td>Size</td>
+    <td>VarInt</td>
+    <td>区块数据的大小</td>
+  </tr>
+
+
+  <tr>
+    <td>Data</td>
+    <td>Byte array</td>
+    <td>区块数据在14w28a版本后不会压缩</td>
+  </tr>
+</table>
+
+
+##多个方块更新
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x22</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
+    <td>Chunk X</td>
+    <td>Int</td>
+    <td>区块的X坐标</td>
+  </tr>
+  <tr>
+    <td>Chunk Z</td>
+    <td>Int</td>
+    <td>区块的Z坐标</td>
+  </tr>
+  <tr>
+    <td>Record count</td>
+    <td>VarInt</td>
+    <td>所影响的方块数量</td>
+  </tr>
+  <tr>
+    <td>Records</td>
+    <td>Array of Records</td>
+    <td></td>
+  </tr>
+</table>
+
+**记录值**
+位掩码|	宽度|	意义
+------|------|-------
+00 FF	|8 bits	|Y坐标
+0F 00	|4 bits	|Z坐标，与区块有关
+F0 00	|4 bits	|X坐标，与区块有关
+ ?	|VarInt	|方块ID
+ 
+##方块更新
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x23</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Location</td>
+    <td>Position</td>
+    <td>方块坐标</td>
+  </tr>
+  <tr>
+    <td>Block ID</td>
+    <td>VarInt</td>
+    <td>新方块的ID id &lt;&lt; 4 | data</td>
+  </tr>
+</table>
+##方块表现
+这个数据包将会用于以下情况：
+
+ - 箱子的大开恶化关闭
+ - 活塞的推拉
+ - 音符盒播放音乐
+ - 信标的更新
+
+请参阅：[方块表现](http://wiki.vg/Block_Actions)
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x24</td>
+    <td>Play</td>
+    <td>Client</td>
+    <td>Location</td>
+    <td>Position</td>
+    <td>方块坐标</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Byte 1</td>
+    <td>Unsigned Byte</td>
+    <td>不同方块都不相同 - 见<a href="http://wiki.vg/Block_Actions">方块表现</a>
+</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Byte 2</td>
+    <td>Unsigned Byte</td>
+    <td>不同方块都不相同 - 见<a href="http://wiki.vg/Block_Actions">方块表现</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Block Type</td>
+    <td>VarInt</td>
+    <td>方块的类型</td>
+  </tr>
+</table>
+
+##方块破坏动画
+
+0-9将显示方块的破坏程度，其他数字意为这个坐标上没有动画。.
+你也可以对空气方块设置动画！破坏动画仍然可见！
+如果你想同时显示多个破坏动画的话，你需要给它们每个独立的实体ID。
+当然如果你设置坐标为水之类的方块的话。它将不会显示真实的破坏动画而是其他一些很有意思的东西。（比如水方块将失去它的透明度）
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x25</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>实体ID</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>Position</td>
+    <td>方块的位置</td>
+  </tr>
+  <tr>
+    <td>Destroy Stage</td>
+    <td>Byte</td>
+    <td>0 - 9 或其他任意值来移除方块</td>
+  </tr>
+</table>
+
+##地图区块传送
+请参阅：[SMP地图格式](http://wiki.vg/SMP_Map_Format)
+
+1.8版的改变在：[区块数据](#区块数据)
+
+降低数据包的字节数用于将区块一起发送以获得更好的压缩效果。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x26</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
+    <td>Sky light sent</td>
+    <td>Bool</td>
+    <td>无论这个区块是否有光照值信息。在主世界为true，在下界和末地为false</td>
+  </tr>
+  <tr>
+    <td>Chunk column count</td>
+    <td>VarInt</td>
+    <td>这个数据包所含有的区块数量</td>
+  </tr>
+  <tr>
+    <td>Meta information</td>
+    <td>Meta</td>
+    <td>见下表</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>Byte Array</td>
+    <td>区块信息在14w28a后不再被压缩</td>
+  </tr>
+</table>
+
+**Meta**
+<table>
+  <tr>
+    <th>字段名</th>
+    <th>字段类型</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>Chunk X</td>
+    <td>Int</td>
+    <td>区块的X坐标</td>
+  </tr>
+  <tr>
+    <td>Chunk Z</td>
+    <td>Int</td>
+    <td>区块的Z坐标</td>
+  </tr>
+  <tr>
+    <td>Primary bitmap</td>
+    <td>Unsigned Short</td>
+    <td>一个会注明这个区块里的哪部分不是空的位图</td>
+  </tr>
+</table>
+
+##爆炸
+当爆炸发生的时候发送（爬行者，TNT，恶魂的火球）
+每个方块的记录都将被设置为空气。每个轴上的坐标信息将会以 int(X) + record.x 来记录
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="9">0x27</td>
+    <td rowspan="9">游戏</td>
+    <td rowspan="9">客户端</td>
+    <td>X</td>
+    <td>Float</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Float</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Float</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Radius</td>
+    <td>Float</td>
+    <td>目前未在客户端中使用</td>
+  </tr>
+  <tr>
+    <td>Record count</td>
+    <td>Int</td>
+    <td>这是总数，不是大小，大小是这个值的3倍</td>
+  </tr>
+  <tr>
+    <td>Records</td>
+    <td>(Byte, Byte, Byte) × count</td>
+    <td>每个记录都为3符号字节长，每个受影响的方块的偏移量都是由独立的XYZ字节来控制</td>
+  </tr>
+  <tr>
+    <td>Player Motion X</td>
+    <td>Float</td>
+    <td>玩家在爆炸后将会被推向的X坐标</td>
+  </tr>
+  <tr>
+    <td>Player Motion Y</td>
+    <td>Float</td>
+    <td>玩家在爆炸后将会被推向的Y坐标</td>
+  </tr>
+  <tr>
+    <td>Player Motion Z</td>
+    <td>Float</td>
+    <td>玩家在爆炸后将会被推向的Z坐标</td>
+  </tr>
+</table>
+
+##效果
+在客户端产生声音或者药水效果的时候发出。
+默认，minecraft客户端通过距离来调整声音效果的音量。最终由布尔值来禁用它后，声音将会由你当前方向前两个方块发出。现在这个只能用于影响1013(mob.wither.spawn)，而且会被客户端的其他任意值忽略。
+
+**各种效果**
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td colspan="2"><b>声音</b></td>
+  </tr>
+  <tr>
+    <td>1000</td>
+    <td>random.click</td>
+  </tr>
+  <tr>
+    <td>1001</td>
+    <td>random.click</td>
+  </tr>
+  <tr>
+    <td>1002</td>
+    <td>random.bow</td>
+  </tr>
+  <tr>
+    <td>1003</td>
+    <td>random.door_open or random.door_close (50/50 chance)</td>
+  </tr>
+  <tr>
+    <td>1004</td>
+    <td>random.fizz</td>
+  </tr>
+  <tr>
+    <td>1005</td>
+    <td>播放音乐碟。 <b>Data</b> <a href="http://www.minecraftwiki.net/wiki/Music_Discs">Record ID</a>
+</td>
+  </tr>
+  <tr>
+    <td>(1006 未分配)</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td>1007</td>
+    <td>mob.ghast.charge</td>
+  </tr>
+  <tr>
+    <td>1008</td>
+    <td>mob.ghast.fireball</td>
+  </tr>
+  <tr>
+    <td>1009</td>
+    <td>mob.ghast.fireball, but with a lower volume.</td>
+  </tr>
+  <tr>
+    <td>1010</td>
+    <td>mob.zombie.wood</td>
+  </tr>
+  <tr>
+    <td>1011</td>
+    <td>mob.zombie.metal</td>
+  </tr>
+  <tr>
+    <td>1012</td>
+    <td>mob.zombie.woodbreak</td>
+  </tr>
+  <tr>
+    <td>1013</td>
+    <td>mob.wither.spawn</td>
+  </tr>
+  <tr>
+    <td>1014</td>
+    <td>mob.wither.shoot</td>
+  </tr>
+  <tr>
+    <td>1015</td>
+    <td>mob.bat.takeoff</td>
+  </tr>
+  <tr>
+    <td>1016</td>
+    <td>mob.zombie.infect</td>
+  </tr>
+  <tr>
+    <td>1017</td>
+    <td>mob.zombie.unfect</td>
+  </tr>
+  <tr>
+    <td>1018</td>
+    <td>mob.enderdragon.end</td>
+  </tr>
+  <tr>
+    <td>1020</td>
+    <td>random.anvil_break</td>
+  </tr>
+  <tr>
+    <td>1021</td>
+    <td>random.anvil_use</td>
+  </tr>
+  <tr>
+    <td>1022</td>
+    <td>random.anvil_land</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>颗粒</b></td>
+  </tr>
+  <tr>
+    <td>2000</td>
+    <td>生成10个烟雾效果，例如从火种。 数据方向见下表。</td>
+  </tr>
+  <tr>
+    <td>2001</td>
+    <td>方块破坏 <b>Data</b> <a href="http://www.minecraftwiki.net/wiki/Data_values">方块ID</a>
+</td>
+  </tr>
+  <tr>
+    <td>2002</td>
+    <td>Splash potion. Particle effect + glass break sound. Data <a href="http://www.lb-stuff.com/Minecraft/PotionDataValues1.9pre3.txt">Potion ID</a>
+</td>
+  </tr>
+  <tr>
+    <td>2003</td>
+    <td>Eye of ender entity break animation - particles and sound</td>
+  </tr>
+  <tr>
+    <td>2004</td>
+    <td>Mob spawn particle effect: smoke + flames</td>
+  </tr>
+  <tr>
+    <td>2005</td>
+    <td>Spawn "happy villager" effect (green crosses), used for bonemealing vegetation.</td>
+  </tr>
+</table>
+烟雾的方向：
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Direction</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>东南</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>南</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>西南</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>西</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>（上或中间？）</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>东</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>东北</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>北</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>西北</td>
+  </tr>
+</table>
+##音效
+用来播放客户端中的音效
+所有已知的音效名可以在[这里](https://github.com/SirCmpwn/Craft.Net/blob/master/source/Craft.Net.Common/SoundEffect.cs)查到。
+资源包中可能会加入自定义声音。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0x29</td>
+    <td rowspan="6">游戏</td>
+    <td rowspan="6">客户端</td>
+    <td>Sound name</td>
+    <td>String</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Effect position X</td>
+    <td>Int</td>
+    <td>影响的X坐标乘以8</td>
+  </tr>
+  <tr>
+    <td>Effect position Y</td>
+    <td>Int</td>
+    <td>影响的Y坐标乘以8</td>
+  </tr>
+  <tr>
+    <td>Effect position Z</td>
+    <td>Int</td>
+    <td>影响的Z坐标乘以8</td>
+  </tr>
+  <tr>
+    <td>Volume</td>
+    <td>Float</td>
+    <td>1代表100%，可以更大</td>
+  </tr>
+  <tr>
+    <td>Pitch</td>
+    <td>Unsigned Byte</td>
+    <td>63代表100%，可以更大</td>
+  </tr>
+</table>
