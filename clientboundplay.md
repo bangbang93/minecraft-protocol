@@ -2376,7 +2376,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
   </tr>
 </table>
 ## 栏位数据设置
-服务端在一个槽位的东西被增加/移除的时候发送。
+服务端在一个栏位的东西被增加/移除的时候发送。
 <table>
   <tr>
     <th>包标识符</th>
@@ -2434,7 +2434,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
     <td></td>
   </tr>
 </table>
-请参阅[背包窗口](http://wiki.vg/Inventory#Windows)获得更多关于背包索引的信息。
+请参阅[背包窗口](http://wiki.vg/Inventory#Windows)获得更多关于栏位索引的信息。
 ## 背包状态
 <table>
   <tr>
@@ -3401,12 +3401,12 @@ Mod和插件可以用它来发送它们自己的数据。Minecraft自身使用�
     <td rowspan="2">游戏</td>
     <td rowspan="2">客户端</td>
     <td>Header</td>
-    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td><a href="http://wiki.vg/Chat">Chat</a></td>
     <td></td>
   </tr>
   <tr>
     <td>Footer</td>
-    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td><a href="http://wiki.vg/Chat">Chat</a></td>
     <td></td>
   </tr>
 </table>
