@@ -1806,6 +1806,7 @@ F0 00	|4 bits	|X坐标，与区块有关
 
 ## 效果
 在客户端产生声音或者药水效果的时候发出。
+
 默认，minecraft客户端通过距离来调整声音效果的音量。最终由布尔值来禁用它后，声音将会由你当前方向前两个方块发出。现在这个只能用于影响1013(mob.wither.spawn)，而且会被客户端的其他任意值忽略。
 
 ### 各种效果
@@ -1982,7 +1983,9 @@ F0 00	|4 bits	|X坐标，与区块有关
 </table>
 ## 音效
 用来播放客户端中的音效
+
 所有已知的音效名可以在[这里](https://github.com/SirCmpwn/Craft.Net/blob/master/source/Craft.Net.Common/SoundEffect.cs)查到。
+
 资源包中可能会加入自定义声音。
 <table>
   <tr>
@@ -2249,7 +2252,9 @@ F0 00	|4 bits	|X坐标，与区块有关
 
 ## 修改游戏状态
 这将在床不可作为出生点或下雨状态改变的时候使用。
-The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only the codes for 1 and 2 are null.
+
+这个键值有连接到原因代码的字段 0, 1, 2, and 3 但是代码1，2是无效的.
+
 <table>
   <tr>
     <th>包标识符</th>
@@ -2376,7 +2381,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
   </tr>
 </table>
 ## 栏位数据设置
-服务端在一个槽位的东西被增加/移除的时候发送。
+服务端在一个栏位的东西被增加/移除的时候发送。
 <table>
   <tr>
     <th>包标识符</th>
@@ -2434,7 +2439,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
     <td></td>
   </tr>
 </table>
-请参阅[背包窗口](http://wiki.vg/Inventory#Windows)获得更多关于背包索引的信息。
+请参阅[背包窗口](http://wiki.vg/Inventory#Windows)获得更多关于栏位索引的信息。
 ## 背包状态
 <table>
   <tr>
@@ -2487,7 +2492,9 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
 酿造时间值大小范围为0到400，400表示空箭头，0表示满箭头
 
 ## 确认事物
-服务端发这个包来确认请求是否被客户端所接受，或是否存在冲突（因为服务器卡顿造成的） 这个包也可以被客户端发送到服务端来回应服务端拒绝事物包。
+服务端发这个包来确认请求是否被客户端所接受，或是否存在冲突（因为服务器卡顿造成的）
+
+这个包也可以被客户端发送到服务端来回应服务端拒绝事物包。
 <table>
   <tr>
     <th>包标识符</th>
@@ -2833,7 +2840,9 @@ notchian服务器在用户列表更新的时候发送（客户端的<tab>键列�
 
 ## 玩家能力
 后面的两个浮点数是用来分别表示玩家走路/飞行速度的， 第一个字节用来表示四个布尔值。
-这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1), 以及玩家是否处于创造模式 (1, bit 0).
+
+这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1),以及玩家是否处于创造模式 (1, bit 0).
+
 如需获得这些布尔值的信息， simply AND (&) the byte with 1,2,4 and 8 respectively, to get the 0 or 1 bitwise value. To set them OR (|) them with their repspective masks.
 <table>
   <tr>
@@ -3401,12 +3410,12 @@ Mod和插件可以用它来发送它们自己的数据。Minecraft自身使用�
     <td rowspan="2">游戏</td>
     <td rowspan="2">客户端</td>
     <td>Header</td>
-    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td><a href="http://wiki.vg/Chat">Chat</a></td>
     <td></td>
   </tr>
   <tr>
     <td>Footer</td>
-    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td><a href="http://wiki.vg/Chat">Chat</a></td>
     <td></td>
   </tr>
 </table>
