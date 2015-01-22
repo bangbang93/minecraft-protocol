@@ -2651,6 +2651,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
     <td>如果不呈现则为 TAG_END (0)</td>
   </tr>
 </table>
+
 **行为**
 
  - 1：设置刷怪笼的刷怪概率
@@ -2659,6 +2660,7 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
  - 4：设置生物的头的方向和皮肤
  - 5：设置花盆上的花类型
  - 6：设置气质的基本颜色和样式
+
 ## 打开木牌编辑窗
 在放置牌子的时候发送。
 <table>
@@ -2679,7 +2681,9 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
     <td>方块坐标</td>
   </tr>
 </table>
+
 ## 统计信息
+
 <table>
   <tr>
     <th>包标识符</th>
@@ -2709,7 +2713,9 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
     <td>发送的数量</td>
   </tr>
 </table>
+
 ## 玩家列表
+
 notchian服务器在用户列表更新的时候发送（客户端的<tab>键列表）
 <table>
   <tr>
@@ -2821,6 +2827,637 @@ notchian服务器在用户列表更新的时候发送（客户端的<tab>键列�
     <td>4 (REMOVE_PLAYER)</td>
     <td colspan="2"></td>
     <td></td>
+    <td></td>
+  </tr>
+</table>
+
+## 玩家能力
+后面的两个浮点数是用来分别表示玩家走路/飞行速度的， 第一个字节用来表示四个布尔值。
+这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1), 以及玩家是否处于创造模式 (1, bit 0).
+如需获得这些布尔值的信息， simply AND (&) the byte with 1,2,4 and 8 respectively, to get the 0 or 1 bitwise value. To set them OR (|) them with their repspective masks.
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x39</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>Flags</td>
+    <td>Byte</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Flying speed</td>
+    <td>Float</td>
+    <td>previous integer value divided by 250</td>
+  </tr>
+  <tr>
+    <td>Walking speed</td>
+    <td>Float</td>
+    <td>previous integer value divided by 250</td>
+  </tr>
+</table>
+## Tab补全
+服务端会根据最后发送的单词来回应给客户端一个自动完成列表。在平常聊天时，这个列表是玩家的用户名。同时它也支持命令和参数。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x3A</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Count</td>
+    <td>VarInt</td>
+    <td>接下来发送的字符串数量</td>
+  </tr>
+  <tr>
+    <td>Match</td>
+    <td>String</td>
+    <td>一个合适的命令，注意因为计数（Count）需求，每一个命令都是以单字符串单独发送的。</td>
+  </tr>
+</table>
+## 计分板容器
+服务端在新建或删除一个计分板的时候发送给客户端。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x3B</td>
+    <td rowspan="4">游戏</td>
+    <td rowspan="4">客户端</td>
+    <td>Objective name</td>
+    <td>String</td>
+    <td>容器独有的名称</td>
+  </tr>
+  <tr>
+    <td>Mode</td>
+    <td>Byte</td>
+    <td>0表示新建计分板，1表示移除计分板，2表示更新显示文字</td>
+  </tr>
+  <tr>
+    <td>Objective value</td>
+    <td>String</td>
+    <td>只有当Mode为0或2时才会显示分数</td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>String</td>
+    <td>只有Mode为0或2时才可用。"integer"或"hearts"</td>
+  </tr>
+</table>
+## 更新积分
+当计分板内容更新的时候发送给客户端。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="4">0x3C</td>
+    <td rowspan="4">Play</td>
+    <td rowspan="4">Client</td>
+    <td>Score name</td>
+    <td>String</td>
+    <td>需要更新或删除的计分板名</td>
+  </tr>
+  <tr>
+    <td>Update/Remove</td>
+    <td>Byte</td>
+    <td>0表示创建/更新一个项目，1表示删除项目</td>
+  </tr>
+  <tr>
+    <td>Objective Name</td>
+    <td>String</td>
+    <td>分数所属的容器的容器名</td>
+  </tr>
+  <tr>
+    <td>Value</td>
+    <td>VarInt</td>
+    <td>显示的分数值，只有在更新/删除的时候这个值不等于1.</td>
+  </tr>
+</table>
+## 显示计分板
+在客户端需要显示计分板的时候发给客户端。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x3D</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Position</td>
+    <td>Byte</td>
+    <td>计分板所处位置，0 = list, 1 = sidebar, 2 = belowName.</td>
+  </tr>
+  <tr>
+    <td>Score Name</td>
+    <td>String</td>
+    <td>计分板所显示的独有的名称</td>
+  </tr>
+</table>
+## 队伍
+创建和更新队伍。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="14">0x3E</td>
+    <td rowspan="14">游戏</td>
+    <td rowspan="14">客户端</td>
+    <td>Team Name</td>
+    <td>String</td>
+    <td>队伍独有的名称（和计分板共享）</td>
+  </tr>
+  <tr>
+    <td rowspan="5">Mode</td>
+    <td rowspan="5">Byte</td>
+    <td>0表示队伍已创建</td>
+  </tr>
+  <tr>
+    <td>1表示队伍已删除</td>
+  </tr>
+  <tr>
+    <td>2表示队伍信息已更新</td>
+  </tr>
+  <tr>
+    <td>3表示有新的玩家加入队伍</td>
+  </tr>
+  <tr>
+    <td>4表示有玩家从队中除名</td>
+  </tr>
+  <tr>
+    <td>Team Display Name</td>
+    <td>String</td>
+    <td>只有当Mode=0或2时有效</td>
+  </tr>
+  <tr>
+    <td>Team Prefix</td>
+    <td>String</td>
+    <td>只有当Mode=0或2时有效。显示在玩家名前面的是队伍名</td>
+  </tr>
+  <tr>
+    <td>Team Suffix</td>
+    <td>String</td>
+    <td>只有当Mode=0或2时有效。显示在玩家名后面的是队伍名</td>
+  </tr>
+  <tr>
+    <td>Friendly fire</td>
+    <td>Byte</td>
+    <td>只有当Mode=0或2时有效；0表示关闭，1表示大开，3表示隐藏队友的</td>
+  </tr>
+  <tr>
+    <td>Name Tag Visibility</td>
+    <td>String</td>
+    <td>只有当Mode=0或2时有效；always, hideForOtherTeams, hideForOwnTeam, never.</td>
+  </tr>
+  <tr>
+    <td>Color</td>
+    <td>Byte</td>
+    <td>只有当Mode=0或2时有效。与<a href="http://wiki.vg/Chat">聊天</a>颜色相同</td>
+  </tr>
+  <tr>
+    <td>Player count</td>
+    <td>VarInt</td>
+    <td>只有当Mode=0或3或4时有效，玩家数量在键值中</td>
+  </tr>
+  <tr>
+    <td>Players</td>
+    <td>Array of strings</td>
+    <td>只有当Mode=0或3或4时有效，内容为添加或移除的玩家。最长40字所以以后可能会支持UUID。</td>
+  </tr>
+</table>
+## 插件信息
+Mod和插件可以用它来发送它们自己的数据。Minecraft自身使用一系列[plugin channels](http://wiki.vg/Plugin_channel)。这些内部频道都前置于MC|.
+更多信息可见此：<http://dinnerbone.com/blog/2012/01/13/minecraft-plugin-channels-messaging/>
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x3F</td>
+    <td rowspan="2">Play</td>
+    <td rowspan="2">Client</td>
+    <td>Channel</td>
+    <td>String</td>
+    <td>所需要用于发送数据的“频道”</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>Byte Array</td>
+    <td>任意数据</td>
+  </tr>
+</table>
+## 断开连接
+服务端在断开客户端的连接时发送。服务端假设发送者在收到这个包后已经关闭连接。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x40</td>
+    <td>游戏</td>
+    <td>客户端</td>
+    <td>Reason</td>
+    <td>String</td>
+    <td>在客户端释放连接的时候显示。一定要为有效的JSON格式。</td>
+  </tr>
+</table>
+## 服务器难度
+在客户端的设置菜单中改变游戏难度。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x41</td>
+    <td>游戏</td>
+    <td>客户端</td>
+    <td>Difficulty</td>
+    <td>Unsigned Byte</td>
+    <td>0:和平, 1:简单, 2:一般, 3: 困难</td>
+  </tr>
+</table>
+## 格斗事件
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0x42</td>
+    <td rowspan="6">游戏</td>
+    <td rowspan="6">客户端</td>
+    <td>Event</td>
+    <td>VarInt</td>
+    <td>0 ENTER_COMBAT, 1 END_COMBAT, 2 ENTITY_DEAD</td>
+  </tr>
+  <tr>
+    <td>Duration</td>
+    <td>VarInt</td>
+    <td>只用于 END_COMBAT</td>
+  </tr>
+  <tr>
+    <td>Entity ID</td>
+    <td>Int</td>
+    <td>只用于 END_COMBAT</td>
+  </tr>
+  <tr>
+    <td>Player ID</td>
+    <td>VarInt</td>
+    <td>只用于 ENTITY_DEAD</td>
+  </tr>
+  <tr>
+    <td>Entity ID</td>
+    <td>Int</td>
+    <td>只用于 ENTITY_DEAD</td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>String</td>
+    <td>只用于 ENTITY_DEAD</td>
+  </tr>
+</table>
+## 相机
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x43</td>
+    <td>Play</td>
+    <td>Client</td>
+    <td>Camera ID</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+</table>
+## 世界边框
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th colspan="2">字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="18">0x44</td>
+    <td rowspan="18">游戏</td>
+    <td rowspan="18">客户端</td>
+    <td colspan="2">Action</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>操作</td>
+    <td>名称</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>0 (SET_SIZE)</td>
+    <td>Radius</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="3">1 (LERP_SIZE)</td>
+    <td>Old radius</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>New radius</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Speed</td>
+    <td>VarLong</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="2">2 (SET_CENTER)</td>
+    <td>X</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="8">3 (INITIALIZE)</td>
+    <td>X</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Old radius</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>New radius</td>
+    <td>Double</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Speed</td>
+    <td>VarLong</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Portal Teleport Boundary</td>
+    <td>VarInt</td>
+    <td>Resulting coordinates from a portal teleport are limited to +-value. Usually 29999984.</td>
+  </tr>
+  <tr>
+    <td>Warning time</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Warning blocks</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4 (SET_WARNING_TIME)</td>
+    <td>Warning time</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>5 (SET_WARNING_BLOCKS)</td>
+    <td>Warning blocks</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+</table>
+## 标题
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th colspan="2">字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="9">0x45</td>
+    <td rowspan="9">游戏</td>
+    <td rowspan="9">客户端</td>
+    <td colspan="2">Action</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Action</td>
+    <td>Name</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>0 (TITLE)</td>
+    <td>Text</td>
+    <td>Chat</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1 (SUBTITLE)</td>
+    <td>Text</td>
+    <td>Chat</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>2 (TIMES)</td>
+    <td>Fade In</td>
+    <td>Int</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Stay</td>
+    <td>Int</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Fade Out</td>
+    <td>Int</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>3 (CLEAR)</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4 (RESET)</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+## 设置压缩
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x46</td>
+    <td>游戏</td>
+    <td>客户端</td>
+    <td>Threshold</td>
+    <td>VarInt</td>
+    <td>Threshold是数据包压缩前最大的大小</td>
+  </tr>
+</table>
+## 玩家列表首尾
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x47</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Header</td>
+    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Footer</td>
+    <td>&lt;a href="http://wiki.vg/Chat"&gt;Chat&lt;/a&gt;</td>
+    <td></td>
+  </tr>
+</table>
+## 发送资源包
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x48</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">客户端</td>
+    <td>URL</td>
+    <td>String</td>
+    <td>资源包的URL地址</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Hash</td>
+    <td rowspan="2">String</td>
+    <td>资源包的一个40位的16进制以及小写字母SHA-1散列 (必须小写字母才能保证它工作)</td>
+  </tr>
+  <tr>
+    <td>如果不是40位长的16进制字段，客户端将不会用它来hash有效性而且很容易消耗带宽，但是仍然会以一个独有ID来对待</td>
+  </tr>
+</table>
+## 更新实体NBT
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x49</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Tag</td>
+    <td>NBT Tag</td>
     <td></td>
   </tr>
 </table>
