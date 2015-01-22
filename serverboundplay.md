@@ -372,3 +372,729 @@ Face代表敲击的砖块面,有如下6种值:
 (译注:在1.7.2中,服务器确实会在大多数情况下忽略客户端发来的ID,唯一一种用到客户端发来的物品ID的情况是在检查物品是否耗尽的时候. 至于那个字段值为-1的情况,还没有被观测到...)
 
 另外,在使用水桶时,原版客户端可能会发送两个封包:一个正常的放置砖块封包,然后是一个特殊情况的放置砖块封包. 它们会在你使用水桶的时候依次发送. 第一个不会起任何作用,真正执行舀水动作的是第二个封包,取水的位置是在服务器端根据玩家的位置和朝向来测算的.
+
+## 持有物品改变
+当玩家所持物品栏位发生改变时发送
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x09</td>
+    <td>游戏</td>
+    <td>服务器</td>
+    <td>Slot</td>
+    <td>Short</td>
+    <td>玩家选择的栏位（0-8）</td>
+  </tr>
+</table>
+
+## 动画
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x0A</td>
+    <td>游戏</td>
+    <td>服务器</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+</table>
+
+## 实体表现
+
+在蹲着，离开床或者跑的时候发送。客户端用0x28来发送动作。客户端将发送自己的动作ID = 3 when "Leave Bed"已点击。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x0B</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">服务器</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>玩家ID</td>
+  </tr>
+  <tr>
+    <td>Action ID</td>
+    <td>VarInt</td>
+    <td>动作ID，见下表</td>
+  </tr>
+  <tr>
+    <td>Jump Boost</td>
+    <td>VarInt</td>
+    <td>马跳加速，范围从0到100</td>
+  </tr>
+</table>
+
+动作ID可以为下列值：
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>蹲下</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>起立</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>离开床</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>开始冲刺</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>停止冲刺</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>骑马跳</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Open inventory</td>
+  </tr>
+</table>
+
+## 驾驶交通工具
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x0C</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">服务器</td>
+    <td>Sideways</td>
+    <td>Float</td>
+    <td>Positive to the left of the player</td>
+  </tr>
+  <tr>
+    <td>Forward</td>
+    <td>Float</td>
+    <td>Positive forward</td>
+  </tr>
+  <tr>
+    <td>Flags</td>
+    <td>Unsigned Byte</td>
+    <td>0x1 上交通工具, 0x2 下交通工具</td>
+  </tr>
+</table>
+
+## 关闭窗口
+这个包会在客户端关闭一个窗口的时候发送。
+
+注意，notchian客户端即使没有打开背包的信息时仍然发送一个关闭0号窗口的信息来关闭背包。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x0D</td>
+    <td>游戏</td>
+    <td>服务器</td>
+    <td>Window id</td>
+    <td>byte</td>
+    <td>要关闭的窗口的ID，0表示背包</td>
+  </tr>
+</table>
+
+## 点击窗口
+
+这个包会在玩家点击窗口中的栏位时发送
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0x0E</td>
+    <td rowspan="6">游戏</td>
+    <td rowspan="6">服务器</td>
+    <td>Window ID</td>
+    <td>Byte</td>
+    <td>所点击的窗口ID，0表示玩家背包</td>
+  </tr>
+  <tr>
+    <td>Slot</td>
+    <td>Short</td>
+    <td>点击的栏位，见下文</td>
+  </tr>
+  <tr>
+    <td>Button</td>
+    <td>Byte</td>
+    <td>所用来点击的键，见下文</td>
+  </tr>
+  <tr>
+    <td>Action number</td>
+    <td>Short</td>
+    <td>这个动作的唯一数字，用来控制事物（见事物包）</td>
+  </tr>
+  <tr>
+    <td>Mode</td>
+    <td>Byte</td>
+    <td>背包操作模式，见下文</td>
+  </tr>
+  <tr>
+    <td>Clicked item</td>
+    <td>Slot</td>
+    <td></td>
+  </tr>
+</table>
+
+请参阅[背包窗口](http://wiki.vg/Inventory#Windows)来获取更多关于栏位索引的信息
+当右键点击一组物品时，一半将拿出另一半留在栏位中。如果这个栏位的物品数量为奇数，稍微少的那一部分将留在栏位中。
+
+Action number实际上是一个计数器，从1开始计数，这个数字被服务端用来当作一个事物ID来回发[事物包](clientboundplay.md#确认事物)
+客户端是通过”模式“和”按键“这两个字段来区分点击事件。
+
+<table>
+  <tr>
+    <th>模式</th>
+    <th>按键</th>
+    <th>栏位</th>
+    <th>触发方式</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0</td>
+    <td>0</td>
+    <td>Normal</td>
+    <td>鼠标左键点击</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Normal</td>
+    <td>鼠标右键点击</td>
+  </tr>
+  <tr>
+    <td rowspan="2">1</td>
+    <td>0</td>
+    <td>Normal</td>
+    <td>Shift+鼠标左键点击</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Normal</td>
+    <td>Shift+鼠标右键点击</td>
+  </tr>
+  <tr>
+    <td rowspan="5">2</td>
+    <td>0</td>
+    <td>Normal</td>
+    <td>数字键1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Normal</td>
+    <td>数字键2</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Normal</td>
+    <td>数字键3</td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Normal</td>
+    <td>数字键9</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>2</td>
+    <td>Normal</td>
+    <td>鼠标中键</td>
+  </tr>
+  <tr>
+    <td rowspan="4">4</td>
+    <td>0</td>
+    <td>Normal</td>
+    <td>丢弃物品（Q）</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Normal</td>
+    <td>Ctrl+丢弃物品（Q）</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>-999</td>
+    <td>左键什么都不拿点击背包外(No-op)</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>-999</td>
+    <td>右键什么都不拿点击背包外(No-op)</td>
+  </tr>
+  <tr>
+    <td rowspan="6">5</td>
+    <td>0</td>
+    <td>-999</td>
+    <td>开始鼠标左键（或中键）拖拽</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>-999</td>
+    <td>开始鼠标右键拖拽</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Normal</td>
+    <td>鼠标左键拖拽来增加栏位</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Normal</td>
+    <td>鼠标右键拖拽来增加栏位</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>-999</td>
+    <td>结束鼠标左键拖拽</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>-999</td>
+    <td>结束鼠标右键拖拽</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>0</td>
+    <td>Normal</td>
+    <td>双击</td>
+  </tr>
+</table>
+
+从1.5版开始，”触屏模式“开始在背包窗口试用。它可以完成拿出一组物品（多于1），然后按住鼠标按键（左/右/中键）并且拖拽到空栏位（或和使用右键一样的方式）。在这情况下客户端会在松开鼠标后发出以下数据包（省略掉第一次拿出的包，它和平常拿出一样）
+
+ 1. 数据包模式 5, 栏位 -999 , 按键 (0 for left | 4 for right);
+ 2. 每个经过的栏位的数据包, 模式仍然为5, 按键 (1 | 5);
+ 3. 数据包模式 5, 栏位 -999, 按键 (2 | 6);
+
+如果其他任何除了"progress"painting数据包发送一旦导致顺序混乱(例如, 一个开始, 几个栏位, 然后另一个开始; 或者左键点中间) the painting 状态将会被重置.
+
+# 确认事物
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x0F</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">服务器</td>
+    <td>Window ID</td>
+    <td>Byte</td>
+    <td>发生操作的窗口ID</td>
+  </tr>
+  <tr>
+    <td>Action number</td>
+    <td>Short</td>
+    <td>每一个操作都有一个唯一数字，这个字段与这个数字有关</td>
+  </tr>
+  <tr>
+    <td>Accepted</td>
+    <td>Bool</td>
+    <td>操作是否被接受</td>
+  </tr>
+</table>
+
+## 创造模式背包事件
+
+当处于创造模式的玩家在普通背包窗口（举例，不是工作台）的时候，服务端将会发送以下包：
+
+ - 是否有物品掉落到快速物品栏里
+ - 是否有物品从快速物品栏中捡起（物品ID为-1）
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x10</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">服务器</td>
+    <td>Slot</td>
+    <td>Short</td>
+    <td>背包栏位</td>
+  </tr>
+  <tr>
+    <td>Clicked item</td>
+    <td>Slot</td>
+    <td></td>
+  </tr>
+</table>
+
+## 附魔物品
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x11</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">服务器</td>
+    <td>Window ID</td>
+    <td>Byte</td>
+    <td>通过打开窗口发送</td>
+  </tr>
+  <tr>
+    <td>Enchantment</td>
+    <td>Byte</td>
+    <td>附魔物品在附魔台窗口的位置，从0开始作为最高的一个</td>
+  </tr>
+</table>
+
+## 修改木牌
+
+这消息客户端将在玩家点击木牌窗口内的”完成“按钮后发送。
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="5">0x12</td>
+    <td rowspan="5">游戏</td>
+    <td rowspan="5">服务器</td>
+    <td>Location</td>
+    <td>Position</td>
+    <td>方块坐标</td>
+  </tr>
+  <tr>
+    <td>Line 1</td>
+    <td>Chat</td>
+    <td>牌子的第一行</td>
+  </tr>
+  <tr>
+    <td>Line 2</td>
+    <td>Chat</td>
+    <td>牌子的第二行</td>
+  </tr>
+  <tr>
+    <td>Line 3</td>
+    <td>Chat</td>
+    <td>牌子的第三行</td>
+  </tr>
+  <tr>
+    <td>Line 4</td>
+    <td>Chat</td>
+    <td>牌子的第四行</td>
+  </tr>
+</table>
+
+## 玩家能力
+
+后面的两个浮点数是用来分别表示玩家走路/飞行速度的， 第一个字节用来表示四个布尔值。
+
+这些标记有玩家是否可以受到伤害 (god mode, 8, bit 3), 玩家是否可以飞行 (4, bit 2), 玩家是否在飞 (2, bit 1),以及玩家是否处于创造模式 (1, bit 0).
+
+如需计算这些布尔值, simply AND (&) the byte with 1,2,4 and 8 respectively, to get the 0 or 1 bitwise value. To set them OR (|) them with their repspective masks. 原版服务端会在玩家开始/停止飞行并且第二个参数也跟着改变。所有其他参数会被原版服务端无视。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x13</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">服务器</td>
+    <td>Flags</td>
+    <td>Byte</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Flying speed</td>
+    <td>Float</td>
+    <td>过去的整数值除以250</td>
+  </tr>
+  <tr>
+    <td>Walking speed</td>
+    <td>Float</td>
+    <td>过去的整数值除以250</td>
+  </tr>
+</table>
+
+## Tab补全
+
+当用户在输入文本时按下[tab]键时发送。有效负载包括光标后所有的文本。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="3">0x14</td>
+    <td rowspan="3">游戏</td>
+    <td rowspan="3">服务器</td>
+    <td>Text</td>
+    <td>String</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Has Position</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Looked at block</td>
+    <td>Position</td>
+    <td>所看的方块，只会在上一项为true时发送</td>
+  </tr>
+</table>
+
+## 客户端设置
+
+当游戏连接或者更改游戏设置时发送。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="5">0x15</td>
+    <td rowspan="5">游戏</td>
+    <td rowspan="5">服务器</td>
+    <td>Locale</td>
+    <td>String</td>
+    <td>en_GB</td>
+  </tr>
+  <tr>
+    <td>View distance</td>
+    <td>Byte</td>
+    <td>客户端渲染距离（区块）</td>
+  </tr>
+  <tr>
+    <td>Chat flags</td>
+    <td>Byte</td>
+    <td>聊天设置，见下文</td>
+  </tr>
+  <tr>
+    <td>Chat colours</td>
+    <td>Bool</td>
+    <td>多人设置中“颜色”设置</td>
+  </tr>
+  <tr>
+    <td>Displayed skin parts</td>
+    <td>Unsigned Byte</td>
+    <td>皮肤部分，见下文</td>
+  </tr>
+</table>
+
+聊天标记有许多值标记为一个字节。
+**开启聊天**: 字节0-1.00：开启，01：仅命令，10：隐藏。
+皮肤显示也同样将许多值标记为一个字节。
+Bit 0: 披风开启
+Bit 1: 衣物开启
+Bit 2: 左袖开启
+Bit 3: 右袖开启
+Bit 4: 左裤腿开启
+Bit 5: 右裤腿开启
+Bit 6: 帽子开启
+最显著的字节(bit 7)未被使用。
+
+## 客户端状态
+
+在客户端已经完成连接以及死亡准备复活时发送。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x16</td>
+    <td>游戏</td>
+    <td>服务器</td>
+    <td>Action ID</td>
+    <td>VarInt</td>
+    <td>见下文</td>
+  </tr>
+</table>
+
+动作ID值：
+
+<table>
+  <tr>
+    <th>动作ID</th>
+    <th>名称</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>执行复活</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>请求状态</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>打开背包成就</td>
+  </tr>
+</table>
+
+## 插件信息
+
+Mod和插件可以用它来发送它们自己的数据。Minecraft自身使用一系列plugin channels。这些内部频道都前置于MC|.
+
+更多信息可见此：<http://dinnerbone.com/blog/2012/01/13/minecraft-plugin-channels-messaging/>
+
+请注意数据长度是由数据包长度的值得，所以没必要发送长度件。
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x17</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">服务器</td>
+    <td>Channel</td>
+    <td>String</td>
+    <td>所需要用于发送数据的“频道”</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>Byte Array</td>
+    <td>任意数据</td>
+  </tr>
+</table>
+
+## 观察者模式
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td>0x18</td>
+    <td>游戏</td>
+    <td>服务器</td>
+    <td>Target Player</td>
+    <td>UUID</td>
+    <td></td>
+  </tr>
+</table>
+
+## 资源包状态
+
+<table>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x19</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">服务器<br></td>
+    <td>Hash</td>
+    <td>String</td>
+    <td>资源包发送包发送的哈希值</td>
+  </tr>
+  <tr>
+    <td>Result</td>
+    <td>VarInt</td>
+    <td>成功载入: 0, 拒绝: 1, 下载失败: 2, 接受: 3</td>
+  </tr>
+</table>
