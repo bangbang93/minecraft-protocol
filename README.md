@@ -104,23 +104,23 @@ Minecraft 协议
     * 5.2.7 [玩家坐标和视点](serverboundplay.md#玩家位置与视点)
     * 5.2.8 [玩家挖掘](serverboundplay.md#玩家挖掘)
     * 5.2.9 [玩家放置方块](serverboundplay.md#玩家放置砖块)
-    * 5.2.10 持有物品改变
-    * 5.2.11 动画
-    * 5.2.12 实体表现
-    * 5.2.13 驾驶交通工具
-    * 5.2.14 关闭窗口
-    * 5.2.15 点击窗口
-    * 5.2.16 确认事务
-    * 5.2.17 创造模式背包事件
-    * 5.2.18 附魔物品
-    * 5.2.19 修改木牌
-    * 5.2.20 玩家能力
-    * 5.2.21 Tab补全
-    * 5.2.22 客户端设置
-    * 5.2.23 客户端状态
-    * 5.2.24 插件信息
-    * 5.2.25 观察者模式
-    * 5.2.26 资源包状态
+    * 5.2.10 [持有物品改变](clientboundplay.md#)
+    * 5.2.11 [动画](clientboundplay.md#)
+    * 5.2.12 [实体表现](clientboundplay.md#)
+    * 5.2.13 [驾驶交通工具](clientboundplay.md#)
+    * 5.2.14 [关闭窗口](clientboundplay.md#)
+    * 5.2.15 [点击窗口](clientboundplay.md#)
+    * 5.2.16 [确认事务](clientboundplay.md#)
+    * 5.2.17 [创造模式背包事件](clientboundplay.md#)
+    * 5.2.18 [附魔物品](clientboundplay.md#)
+    * 5.2.19 [修改木牌](clientboundplay.md#)
+    * 5.2.20 [玩家能力](clientboundplay.md#)
+    * 5.2.21 [Tab补全](clientboundplay.md#)
+    * 5.2.22 [客户端设置](clientboundplay.md#)
+    * 5.2.23 [客户端状态](clientboundplay.md#)
+    * 5.2.24 [插件信息](clientboundplay.md#)
+    * 5.2.25 [观察者模式](clientboundplay.md#)
+    * 5.2.26 [资源包状态](clientboundplay.md#)
 * 6 [状态](status.md)
   * 6.1 [客户端](status.md#状态-客户端接收)
     * 6.1.1 [响应](status.md#响应)
