@@ -1806,6 +1806,7 @@ F0 00	|4 bits	|X坐标，与区块有关
 
 ## 效果
 在客户端产生声音或者药水效果的时候发出。
+
 默认，minecraft客户端通过距离来调整声音效果的音量。最终由布尔值来禁用它后，声音将会由你当前方向前两个方块发出。现在这个只能用于影响1013(mob.wither.spawn)，而且会被客户端的其他任意值忽略。
 
 ### 各种效果
@@ -1982,7 +1983,9 @@ F0 00	|4 bits	|X坐标，与区块有关
 </table>
 ## 音效
 用来播放客户端中的音效
+
 所有已知的音效名可以在[这里](https://github.com/SirCmpwn/Craft.Net/blob/master/source/Craft.Net.Common/SoundEffect.cs)查到。
+
 资源包中可能会加入自定义声音。
 <table>
   <tr>
@@ -2249,7 +2252,9 @@ F0 00	|4 bits	|X坐标，与区块有关
 
 ## 修改游戏状态
 这将在床不可作为出生点或下雨状态改变的时候使用。
-The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only the codes for 1 and 2 are null.
+
+这个键值有连接到原因代码的字段 0, 1, 2, and 3 但是代码1，2是无效的.
+
 <table>
   <tr>
     <th>包标识符</th>
@@ -2487,7 +2492,9 @@ The class has an array of strings linked to reason codes 0, 1, 2, and 3 but only
 酿造时间值大小范围为0到400，400表示空箭头，0表示满箭头
 
 ## 确认事物
-服务端发这个包来确认请求是否被客户端所接受，或是否存在冲突（因为服务器卡顿造成的） 这个包也可以被客户端发送到服务端来回应服务端拒绝事物包。
+服务端发这个包来确认请求是否被客户端所接受，或是否存在冲突（因为服务器卡顿造成的）
+
+这个包也可以被客户端发送到服务端来回应服务端拒绝事物包。
 <table>
   <tr>
     <th>包标识符</th>
