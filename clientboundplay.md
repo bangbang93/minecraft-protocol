@@ -428,32 +428,27 @@
 有匹配的实体ID的客户端将会进入床模式。
 这个数据包将发送给所有附近的玩家（包括已经在床上的玩家）
 <table>
-   <tr>
-      <td>包标识符</td>
-      <td>类别</td>
-      <td>绑定到</td>
-      <td>字段名</td>
-      <td>字段类别</td>
-      <td>备注</td>
-   </tr>
-   <tr>
-      <td>0x0A</td>
-      <td>游戏</td>
-      <td>客户端</td>
-      <td>Entity ID</td>
-      <td>VarInt</td>
-      <td>玩家ID</td>
-   </tr>
-   <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Location</td>
-      <td>Position</td>
-      <td>床头部分的方块的所在位置</td>
-   </tr>
-   <tr>
-   </tr>
+  <tr>
+    <th>包标识符</th>
+    <th>类别</th>
+    <th>绑定到</th>
+    <th>字段名</th>
+    <th>字段类别</th>
+    <th>备注</th>
+  </tr>
+  <tr>
+    <td rowspan="2">0x0A</td>
+    <td rowspan="2">游戏</td>
+    <td rowspan="2">客户端</td>
+    <td>Entity ID</td>
+    <td>VarInt</td>
+    <td>玩家ID</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>Position</td>
+    <td>床头部分的方块的所在位置</td>
+</tr>
 </table>
 
 ## 动作
@@ -1260,7 +1255,7 @@
   <tr>
     <td>Amplifier</td>
     <td>Byte</td>
-    <td>Notch的客户端显示药水效果等级为 Amplifier + 1</td>
+    <td>Notchian client显示药水效果等级为 Amplifier + 1</td>
   </tr>
   <tr>
     <td>Duration</td>
