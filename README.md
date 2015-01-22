@@ -236,48 +236,48 @@ Minecraft 协议
     * 5.1.73 Resource Pack Send            // brainbush  [完成]
     * 5.1.74 Update Entity NBT             // brainbush  [完成]
     * 5.2 Serverbound    
-    * 5.2.1 Keep Alive                // DeckerCHAN [完成]
-    * 5.2.2 Chat Message              // DeckerCHAN [完成]
-    * 5.2.3 Use Entity                // szszss     [完成]
-    * 5.2.4 Player                    // szszss     [完成]
-    * 5.2.5 Player Position           // szszss     [完成]
-    * 5.2.6 Player Look               // szszss     [完成]
-    * 5.2.7 Player Position And Look  // szszss     [完成]
-    * 5.2.8 Player Digging            // szszss     [完成]
-    * 5.2.9 Player Block Placement    // szszss     [完成]
-    * 5.2.10 Held Item Change
-    * 5.2.11 Animation
-    * 5.2.12 Entity Action
-    * 5.2.13 Steer Vehicle
-    * 5.2.14 Close Window
-    * 5.2.15 Click Window
-    * 5.2.16 Confirm Transaction
-    * 5.2.17 Creative Inventory Action
-    * 5.2.18 Enchant Item
-    * 5.2.19 Update Sign
-    * 5.2.20 Player Abilities
-    * 5.2.21 Tab-Complete
-    * 5.2.22 Client Settings
-    * 5.2.23 Client Status
-    * 5.2.24 Plugin Message
-    * 5.2.25 Spectate
-    * 5.2.26 Resource Pack Status
-* 6 Status                      // szszss     [完成]
-  * 6.1 Clientbound             // szszss     [完成]
-    * 6.1.1 Response            // szszss     [完成]
-    * 6.1.2 Ping                // szszss     [完成]
-    * 6.2 Serverbound           // szszss     [完成]
-    * 6.2.1 Request             // szszss     [完成]
-    * 6.2.2 Ping                // szszss     [完成]
-* 7 Login                       // szszss     [完成]
-  * 7.1 Clientbound             // szszss     [完成]
-    * 7.1.1 Disconnect          // szszss     [完成]
-    * 7.1.2 Encryption Request  // szszss     [完成]
-    * 7.1.3 Login Success       // szszss     [完成]
-    * 7.1.4 Set Compression     // szszss     [完成]
-  * 7.2 Serverbound             // szszss     [完成]
-    * 7.2.1 Login Start         // szszss     [完成]
-    * 7.2.2 Encryption Response // szszss     [完成]
+    * 5.2.1 Keep Alive                     // DeckerCHAN [完成]
+    * 5.2.2 Chat Message                   // DeckerCHAN [完成]
+    * 5.2.3 Use Entity                     // szszss     [完成]
+    * 5.2.4 Player                         // szszss     [完成]
+    * 5.2.5 Player Position                // szszss     [完成]
+    * 5.2.6 Player Look                    // szszss     [完成]
+    * 5.2.7 Player Position And Look       // szszss     [完成]
+    * 5.2.8 Player Digging                 // szszss     [完成]
+    * 5.2.9 Player Block Placement         // szszss     [完成]
+    * 5.2.10 Held Item Change              // brainbush  [完成]
+    * 5.2.11 Animation                     // brainbush  [完成]
+    * 5.2.12 Entity Action                 // brainbush  [完成]
+    * 5.2.13 Steer Vehicle                 // brainbush  [完成]
+    * 5.2.14 Close Window                  // brainbush  [完成]
+    * 5.2.15 Click Window                  // brainbush  [完成]
+    * 5.2.16 Confirm Transaction           // brainbush  [完成]
+    * 5.2.17 Creative Inventory Action     // brainbush  [完成]
+    * 5.2.18 Enchant Item                  // brainbush  [完成]
+    * 5.2.19 Update Sign                   // brainbush  [完成]
+    * 5.2.20 Player Abilities              // brainbush  [完成]
+    * 5.2.21 Tab-Complete                  // brainbush  [完成]
+    * 5.2.22 Client Settings               // brainbush  [完成]
+    * 5.2.23 Client Status                 // brainbush  [完成]
+    * 5.2.24 Plugin Message                // brainbush  [完成]
+    * 5.2.25 Spectate                      // brainbush  [完成]
+    * 5.2.26 Resource Pack Status          // brainbush  [完成]
+* 6 Status                                 // szszss     [完成]
+  * 6.1 Clientbound                        // szszss     [完成]
+    * 6.1.1 Response                       // szszss     [完成]
+    * 6.1.2 Ping                           // szszss     [完成]
+    * 6.2 Serverbound                      // szszss     [完成]
+    * 6.2.1 Request                        // szszss     [完成]
+    * 6.2.2 Ping                           // szszss     [完成]
+* 7 Login                                  // szszss     [完成]
+  * 7.1 Clientbound                        // szszss     [完成]
+    * 7.1.1 Disconnect                     // szszss     [完成]
+    * 7.1.2 Encryption Request             // szszss     [完成]
+    * 7.1.3 Login Success                  // szszss     [完成]
+    * 7.1.4 Set Compression                // szszss     [完成]
+  * 7.2 Serverbound                        // szszss     [完成]
+    * 7.2.1 Login Start                    // szszss     [完成]
+    * 7.2.2 Encryption Response            // szszss     [完成]
 * 8 See Also
 ```
 
