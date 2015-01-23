@@ -15,7 +15,7 @@ Minecraft 协议
   * 2.1 [未压缩的封包](packetformat.md#未压缩的封包)
   * 2.2 [压缩的封包](packetformat.md#压缩的封包)
 * 3 [握手](handshaking.md)
-  * 3.1 [服务器端](handshaking.md#握手-服务器接收)
+  * 3.1 [服务端](handshaking.md#握手-服务器接收)
     * 3.1.1 [握手](handshaking.md#握手)
 * 4 游戏中
   * 4.1 [客户端](clientboundplay.md)
@@ -94,7 +94,7 @@ Minecraft 协议
     * 4.1.72 [玩家列表首尾](clientboundplay.md#)
     * 4.1.73 [发送资源包](clientboundplay.md#)
     * 4.1.74 [更新实体NBT](clientboundplay.md#)
-  * 4.2 服务器端
+  * 4.2 服务端
     * 4.2.1 [保持在线](keepalive.md)
     * 4.2.2 [聊天消息](chatmessage.md)
     * 4.2.3 [使用实体](serverboundplay.md#使用实体)
@@ -124,7 +124,7 @@ Minecraft 协议
   * 5.1 [客户端](status.md#状态-客户端接收)
     * 5.1.1 [响应](status.md#响应)
     * 5.1.2 [Ping](status.md#Ping)
-  * 5.2 [服务器端](status.md#状态-服务器接收)
+  * 5.2 [服务端](status.md#状态-服务器接收)
     * 5.2.1 [请求](status.md#请求)
     * 5.2.2 [Ping](status.md#Ping)
 * 6 [登录](login.md)
@@ -133,7 +133,7 @@ Minecraft 协议
     * 6.1.2 [请求加密](login.md#请求加密)
     * 6.1.3 [登录成功](login.md#登陆成功)
     * 6.1.4 [设置压缩](login.md#启用压缩)
-  * 6.2 [服务器端](login.md#登陆-服务器接收)
+  * 6.2 [服务端](login.md#登陆-服务器接收)
     * 6.2.1 [开始登录](login.md#登陆开始)
     * 6.2.2 [加密响应](login.md#响应加密)
 
@@ -150,13 +150,13 @@ Minecraft 协议
   * 1.3 Fixed-point numbers                // brainbush  [完成]
   * 1.4 Protocol version                   // brainbush  [完成]
   * 1.5 Other definitions                  // brainbush  [完成]
-* 2 Packet format
+* 2 Packet format                          // szszss     [完成]
   * 2.1 Without compression                // szszss     [完成]
   * 2.2 With compression                   // szszss     [完成]
 * 3 Handshaking                            // szszss     [完成]
   * 3.1 Serverbound                        // szszss     [完成]
     * 3.1.1 Handshake                      // szszss     [完成]
-* 4 Play
+* 4 Play                                   // KBlackcn & DeckerCHAN & szszss & brainbush  [完成]
   * 4.1 Clientbound                        // KBlackcn & brainbush  [完成]
     * 4.1.1 Keep Alive                     // KBlackcn   [完成]
     * 4.1.2 Join Game                      // KBlackcn   [完成]
