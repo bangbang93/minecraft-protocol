@@ -149,7 +149,7 @@ Minecraft 协议
   * 1.2 Position                           // bangbang93 [完成]
   * 1.3 Fixed-point numbers                // brainbush  [完成]
   * 1.4 Protocol version                   // brainbush  [完成]
-  * 1.5 Other definitions                  // bangbang93 [待译]
+  * 1.5 Other definitions                  // brainbush  [完成]
 * 2 Packet format
   * 2.1 Without compression                // szszss     [完成]
   * 2.2 With compression                   // szszss     [完成]
