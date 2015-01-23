@@ -105,7 +105,7 @@
 
 </table>
 
-## Position
+## 坐标
 被分成三部分的64位长整形
 
 x: 26位最高有效位
@@ -128,3 +128,73 @@ x = val >> 38;
 y = (val >> 26) & 0xFFF
 z = val << 38 >> 38
 ```
+## 定点小数
+
+一些数据是以[定点小数](https://en.wikipedia.org/wiki/Fixed-point_arithmetic)存储的, 前面几位数表示整数部分 (小数点左边的数字) 剩下的部分表示小数部分（小数点右边的）。相比之下浮点数（浮点和双精度）保存自身的数字（尾数）在一个区块中，小数点的位置 (幂)则存在它旁边。
+
+基本上，定点小数比浮点数有更小的范围，它分数展示对更高的值有利。这使得他们很完美的全局用坐标表示minecraft实体的位置，在一个单独的方块（或meter）中，准确存储其整数部分比定位它们更重要。
+
+坐标一般以一个32位整数显示，前面五位是分数部分，剩下存储的是整数部分。
+
+Java缺乏对分数整数的支持，但你可以以整数形式显示它们。若要将双精浮点数转为整数形式，可以用以下公式：
+
+```
+ abs_int = (int)double * 32;
+ ```
+也可以通过以下公式算回来：
+```
+ double = (double)abs_int / 32;
+```
+
+## 协议版本
+
+请查看[协议版本号](http://wiki.vg/Protocol_version_numbers)来获取旧版本的信息。
+
+<table>
+  <tr>
+    <th>Minecraft版本</th>
+    <th>协议版本</th>
+  </tr>
+  <tr>
+    <td>1.8.1</td>
+    <td rowspan="2">47</td>
+  </tr>
+  <tr>
+    <td>1.8</td>
+  </tr>
+  <tr>
+    <td>1.7.6</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>1.7.2</td>
+    <td>4</td>
+  </tr>
+</table>
+
+## 其他定义
+<table>
+  <tr>
+    <th>Term</th>
+    <th>定义</th>
+  </tr>
+  <tr>
+    <td>Player</td>
+    <td>在单独使用时，玩家总是倾向客户端连接到服务器。</td>
+  </tr>
+  <tr>
+    <td>Entity</td>
+    <td>实体课指代任何物品，玩家，生物，矿车，船等等。请参阅<a href="http://minecraft.gamepedia.com/Entity">Minecraft Wiki的文章</a>上的完整列表。</td>
+  </tr>
+  <tr>
+    <td>EID</td>
+    <td>一个EID，或实体ID，是一个用来指定实体的四字节数列。每个实体的EID在整个服务器上是独立的。</td>
+  </tr>
+  <tr>
+    <td>XYZ</td>
+    <td>在这个文档中，坐标轴显示的名称和在调试窗口（F3）中看到的相同，Y表示上，X表示东，Z表示南。</td>
+  </tr>
+  <tr>
+    <td colspan="2">请参考：<a href="http://wiki.vg/Units_of_Measurement">测量单位</a></td>
+  </tr>
+</table>
