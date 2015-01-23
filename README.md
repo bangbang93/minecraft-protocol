@@ -159,7 +159,7 @@ Minecraft 协议
   * 4.1 Serverbound                        // szszss     [完成]
     * 4.1.1 Handshake                      // szszss     [完成]
 * 5 Play
-  * 5.1 Clientbound                        // KBlackcn   [翻译]
+  * 5.1 Clientbound                        // KBlackcn & brainbush  [完成]
     * 5.1.1 Keep Alive                     // KBlackcn   [完成]
     * 5.1.2 Join Game                      // KBlackcn   [完成]
     * 5.1.3 Chat Message                   // KBlackcn   [完成]
@@ -235,7 +235,7 @@ Minecraft 协议
     * 5.1.72 Player List Header/Footer     // brainbush  [完成]
     * 5.1.73 Resource Pack Send            // brainbush  [完成]
     * 5.1.74 Update Entity NBT             // brainbush  [完成]
-    * 5.2 Serverbound    
+    * 5.2 Serverbound                      // DeckerCHAN & szszss & brainbush  [完成]
     * 5.2.1 Keep Alive                     // DeckerCHAN [完成]
     * 5.2.2 Chat Message                   // DeckerCHAN [完成]
     * 5.2.3 Use Entity                     // szszss     [完成]
