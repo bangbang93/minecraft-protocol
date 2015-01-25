@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td> Data </td>
-            <td> Byte Array</td>
+            <td> Byte Array </td>
             <td> 由连接状态和数据包ID两方面决定</td>
         </tr>
     </tbody>
