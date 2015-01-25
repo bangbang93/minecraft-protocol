@@ -109,7 +109,7 @@ Minecraft 协议
     * 5.2.12 [实体表现](serverboundplay.md#实体表现)
     * 5.2.13 [驾驶交通工具](serverboundplay.md#驾驶交通工具)
     * 5.2.14 [关闭窗口](serverboundplay.md#关闭窗口)
-    * 5.2.15 点击窗口
+    * 5.2.15 [点击窗口](serverboundplay.md#点击窗口)
     * 5.2.16 确认事务
     * 5.2.17 创造模式背包事件
     * 5.2.18 附魔物品
@@ -249,8 +249,8 @@ Minecraft 协议
     * 5.2.11 Animation				//roer			[完成]
     * 5.2.12 Entity Action			//roer			[完成]
     * 5.2.13 Steer Vehicle			//roer			[完成]
-    * 5.2.14 Close Window
-    * 5.2.15 Click Window
+    * 5.2.14 Close Window			//roer			[完成]
+    * 5.2.15 Click Window			//roer			[完成]
     * 5.2.16 Confirm Transaction
     * 5.2.17 Creative Inventory Action
     * 5.2.18 Enchant Item
