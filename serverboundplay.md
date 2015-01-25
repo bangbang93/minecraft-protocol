@@ -725,5 +725,34 @@ Face代表敲击的砖块面,有如下6种值:
 
 如果任何发送的“涂画”数据包不同于现在正在发送中的（打个比方，开始，经过一些栏位，然后另外一个开始了；或者在途中点击了左键），那么现在涂画的状态会被重置取消。
 
+##确认事务
 
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x0F</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>发生该事件的窗口ID</td>
+	</tr>
+	<tr>
+		<td>Action Number</td>
+		<td>Short</td>
+		<td>每个被接受的行为都有一个唯一的识别码，这个字段是对应这个识别码的</td>
+	</tr>
+	<tr>
+		<td>Accepted</td>
+		<td>Boolean</td>
+		<td>当行为被接受时</td>
+	</tr>
+</table>
 
