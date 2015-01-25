@@ -1,6 +1,6 @@
 ## 使用实体
 
-客户端会在玩家攻击或右键一个实体(比如玩家,马,矿车...)时发送此封包给服务器.
+客户端会在玩家攻击或右键一个实体(比如玩家,马,矿车……)时发送此封包给服务器.
 
 原版服务器只会在实体距离玩家不超过4单位长度,并且两者之间视线不受阻碍时,才会处理此封包.<br/>
 (译注:在1.8中的规则是:若两者之间没有视线,则距离不能超过3. 若视线通畅,则距离不能超过6.)
@@ -372,3 +372,443 @@ Face代表敲击的砖块面,有如下6种值:
 (译注:在1.7.2中,服务器确实会在大多数情况下忽略客户端发来的ID,唯一一种用到客户端发来的物品ID的情况是在检查物品是否耗尽的时候. 至于那个字段值为-1的情况,还没有被观测到...)
 
 另外,在使用水桶时,原版客户端可能会发送两个封包:一个正常的放置砖块封包,然后是一个特殊情况的放置砖块封包. 它们会在你使用水桶的时候依次发送. 第一个不会起任何作用,真正执行舀水动作的是第二个封包,取水的位置是在服务器端根据玩家的位置和朝向来测算的.
+
+##持有物品改变
+
+切换快捷栏中的物品时会发送
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td>0x09</td>
+		<td>游戏</td>
+		<td>服务器</td>
+		<td>Slot</td>
+		<td> Short </td>
+		<td>玩家所选择的栏位(0-8)</td>
+	</tr>
+</table>
+
+##动画
+
+当玩家手臂摆动时发送
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td>0x0A</td>
+		<td>游戏</td>
+		<td>服务器</td>
+		<td>无字段</td>
+	</tr>
+</table>
+
+##实体表现
+
+当玩家蹲下，离开床，或者奔跑等等动作时发送。使用0x28发送动画动作到客户端，客户端会在“离开床”被点击时发送此动作ID为3的包。
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x0B</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>服务器</td>
+		<td>Entity ID</td>
+		<td>VarInt</td>
+		<td>玩家的ID</td>
+	</tr>
+	<tr>
+		<td>Action ID</td>
+		<td>VarInt</td>
+		<td>动作ID，看下面</td>
+	</tr>
+	<tr>
+		<td>Jump Boost</td>
+		<td>VarInt</td>
+		<td>马的加速跳，范围是0->100</td>
+	</tr>
+</table>
+
+动作ID可以是以下数值:
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>动作</th>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>蹲伏</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>解除蹲伏</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>离开床</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>开始奔跑</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>停止奔跑</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>骑马跳跃</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>打开物品栏</td>
+	</tr>
+</table>
+
+##驾驶交通工具
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x0B</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>服务器</td>
+		<td>Sideways</td>
+		<td>Float</td>
+		<td>玩家左侧面</td>
+	</tr>
+	<tr>
+		<td>Forward</td>
+		<td>Float</td>
+		<td>玩家向前</td>
+	</tr>
+	<tr>
+		<td>Flags</td>
+		<td>Unsigned Byte</td>
+		<td>位掩码: 0x1: 跳跃 0x2: 卸下</td>
+	</tr>
+</table>
+
+##关闭窗口
+
+客户端会在窗口关闭的时候发送此数据包. 
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td>0x0D</td>
+		<td>游戏</td>
+		<td>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>这是窗口关闭的ID。0是物品栏。</td>
+	</tr>
+</table>
+
+##点击窗口
+
+当玩家点击一个窗口中的栏位
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=6>0x0E</td>
+		<td rowspan=6>游戏</td>
+		<td rowspan=6>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>点击的窗口的ID。0是玩家物品栏</td>
+	</tr>
+	<tr>
+		<td>Slot</td>
+		<td>Short</td>
+		<td>被点击的栏位，看下面</td>
+	</tr>
+	<tr>
+		<td>Button</td>
+		<td>Byte</td>
+		<td>点击时使用的按钮，看下面</td>
+	</tr>
+	<tr>
+		<td>Action Number</td>
+		<td>Short</td>
+		<td>动作的唯一识别数字，通过一个计数器实现，从1开始。服务器使用它返回一个确认事务</td>
+	</tr>
+	<tr>
+		<td>Mode</td>
+		<td>Byte</td>
+		<td>物品操作模式，看下面</td>
+	</tr>
+	<tr>
+		<td>Clicked item</td>
+		<td>Slot</td>
+		<td></td>
+	<tr>
+</table>
+
+请看[物品窗口](http://wiki.vg/Inventory#Windows)来知晓栏位是如何被索引的。
+
+当右击一个物品的栈区时，栈中一半的物品都会被拿起并且另外一半还在栏位中。如果栈区内物品数量为奇数，那么在栏位中的那一半会是较小的那一份。
+
+通过模式和按钮的组合来决定客户端发送的不同种类的点击。
+
+<table>
+	<tr>
+		<th>模式</th>
+		<th>按钮</th>
+		<th>栏位</th>
+		<th>触发行为</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0</td>
+		<td>0</td>
+		<td>Normal</td>
+		<td>鼠标左键</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Normal</td>
+		<td>鼠标右键</td>
+	</tr>
+	<tr>
+		<td rowspan=2>1</td>
+		<td>0</td>
+		<td>Normal</td>
+		<td>Shift+鼠标左键</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Normal</td>
+		<td>Shift+鼠标右键(相同行为)</td>
+	</tr>
+	<tr>
+		<td rowspan=5>2</td>
+		<td>0</td>
+		<td>Normal</td>
+		<td>数字键1</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Normal</td>
+		<td>数字键2</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Normal</td>
+		<td>数字键3</td>
+	</tr>
+	<tr>
+		<td>⋮</td>
+		<td>⋮</td>
+		<td>⋮</td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>Normal</td>
+		<td>数字键8</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>2</td>
+		<td>Normal</td>
+		<td>鼠标中键</td>
+	</tr>
+	<tr>
+		<td rowspan=4>4</td>
+		<td>0</td>
+		<td>Normal</td>
+		<td>丢弃键(Q)</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Normal</td>
+		<td>Ctrl+丢弃键(Q)(扔掉一整个栏位的物品)</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>-999</td>
+		<td>在没有物品被鼠标拿起的情况下左击物品栏的外边（非op模式）</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>-999</td>
+		<td>在没有物品被鼠标拿起的情况下右击物品栏的外边（非op模式）</td>
+	</tr>
+	<tr>
+		<td rowspan=6>5</td>
+		<td>0</td>
+		<td>-999</td>
+		<td>开始鼠标左键拖拽（或者是中键）</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>-999</td>
+		<td>开始鼠标右键拖拽</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Normal</td>
+		<td>为鼠标左键拖拽增加栏位</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>Normal</td>
+		<td>为鼠标右键拖拽增加栏位</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>-999</td>
+		<td>结束鼠标左键拖拽</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>-999</td>
+		<td>结束鼠标右键拖拽</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>0</td>
+		<td>Normal</td>
+		<td>双击</td>
+	</tr>
+</table>
+
+从1.5版本开始，“画笔模式”可以在物品栏窗口使用了。首先拿起一栈物品(至少超过一个),然后按住鼠标按键(可以是左键，右键或者中键)并且拖拽其经过空栏位(在右键按下时可以经过具有相同物品的栏位)。
+在鼠标按钮放开的时候（通常会处理第一个“拿起”的数据包）,客户端会发送以下信息到服务器：
+
+1. 模式5，栏位 -999，按键(左键是0 | 右键是4)的数据包
+2. 所有被“涂过”的栏位，模式仍然是5，按键（1 | 5）的数据包
+3. 模式5，栏位 -999，按键（2 | 6）的数据包
+
+如果任何发送的“涂画”数据包不同于现在正在发送中的（打个比方，开始，经过一些栏位，然后另外一个开始了；或者在途中点击了左键），那么现在涂画的状态会被重置取消。
+
+##确认事务
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x0F</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>发生该事件的窗口ID</td>
+	</tr>
+	<tr>
+		<td>Action Number</td>
+		<td>Short</td>
+		<td>每个被接受的行为都有一个唯一的识别码，这个字段是对应这个识别码的</td>
+	</tr>
+	<tr>
+		<td>Accepted</td>
+		<td>Boolean</td>
+		<td>当行为被接受时</td>
+	</tr>
+</table>
+
+##创造模式背包事件
+
+当创造模式用户是在标准物品栏模式(不是一个合成台模式)，服务器会发送一个数据包。
+
+- 当一个物品被扔进快捷栏
+- 当一个物品从快捷栏中拿起(物品ID是-1)
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x10</td>
+		<td rowspan=2>游戏</td>
+		<td rowspan=2>服务器</td>
+		<td>Slot</td>
+		<td>Short</td>
+		<td>物品栏位</td>
+	</tr>
+	<tr>
+		<td>Clicked Item</td>
+		<td>Slot</td>
+		<td></td>
+	</tr>
+</table>
+
+##附魔物品
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x11</td>
+		<td rowspan=2>游戏</td>
+		<td rowspan=2>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>附魔台窗口ID</td>
+	</tr>
+	<tr>
+		<td>Enchantment</td>
+		<td>Byte</td>
+		<td>点击的附魔栏位，从最上面开始计0</td>
+	</tr>
+</table>

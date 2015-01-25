@@ -9,6 +9,8 @@
 
 ###数据包格式
 
+##没有数据压缩
+
 <table>
     <tbody>
         <tr>
@@ -19,7 +21,7 @@
         <tr>
             <td> Length </td>
             <td> VarInt </td>
-            <td> 数据与包ID长度的总和</td>
+            <td> 数据与包识别ID长度的总和</td>
         </tr>
         <tr>
             <td> Packet ID </td>
@@ -28,15 +30,15 @@
         </tr>
         <tr>
             <td> Data </td>
-            <td></td>
-            <td></td>
+            <td> Byte Array </td>
+            <td> 由连接状态和包识别ID两方面决定</td>
         </tr>
     </tbody>
 </table>
 
 ##数据压缩
 
-一旦一个压缩数据包组被发送，后面的所有数据包都将使用zlib压缩算法压缩发送。
+一旦一个压缩数据包组被发送，后面的所有数据包都将使用zlib压缩算法压缩发送。数据包的格式比没有压缩的数据包变得更加轻量。
 
 <table class="wikitable">
     <tbody>
