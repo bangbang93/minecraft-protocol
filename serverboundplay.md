@@ -786,3 +786,29 @@ Face代表敲击的砖块面,有如下6种值:
 		<td></td>
 	</tr>
 </table>
+
+##附魔物品
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x11</td>
+		<td rowspan=2>游戏</td>
+		<td rowspan=2>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>附魔台窗口ID</td>
+	</tr>
+	<tr>
+		<td>Enchantment</td>
+		<td>Byte</td>
+		<td>点击的附魔栏位，从最上面开始计0</td>
+	</tr>
+</table>
