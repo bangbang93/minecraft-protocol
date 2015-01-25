@@ -756,3 +756,33 @@ Face代表敲击的砖块面,有如下6种值:
 	</tr>
 </table>
 
+##创造模式背包事件
+
+当创造模式用户是在标准物品栏模式(不是一个合成台模式)，服务器会发送一个数据包。
+
+- 当一个物品被扔进快捷栏
+- 当一个物品从快捷栏中拿起(物品ID是-1)
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=2>0x10</td>
+		<td rowspan=2>游戏</td>
+		<td rowspan=2>服务器</td>
+		<td>Slot</td>
+		<td>Short</td>
+		<td>物品栏位</td>
+	</tr>
+	<tr>
+		<td>Clicked Item</td>
+		<td>Slot</td>
+		<td></td>
+	</tr>
+</table>
