@@ -21,7 +21,7 @@
         <tr>
             <td> Length </td>
             <td> VarInt </td>
-            <td> 数据与包ID长度的总和</td>
+            <td> 数据与包识别ID长度的总和</td>
         </tr>
         <tr>
             <td> Packet ID </td>
@@ -31,7 +31,7 @@
         <tr>
             <td> Data </td>
             <td> Byte Array </td>
-            <td> 由连接状态和数据包ID两方面决定</td>
+            <td> 由连接状态和包识别ID两方面决定</td>
         </tr>
     </tbody>
 </table>
