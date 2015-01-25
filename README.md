@@ -108,7 +108,7 @@ Minecraft 协议
     * 5.2.11 [动画](serverboundplay.md#动画)
     * 5.2.12 [实体表现](serverboundplay.md#实体表现)
     * 5.2.13 [驾驶交通工具](serverboundplay.md#驾驶交通工具)
-    * 5.2.14 关闭窗口
+    * 5.2.14 [关闭窗口](serverboundplay.md#关闭窗口)
     * 5.2.15 点击窗口
     * 5.2.16 确认事务
     * 5.2.17 创造模式背包事件

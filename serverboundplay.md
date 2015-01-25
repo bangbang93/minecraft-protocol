@@ -517,3 +517,28 @@ Face代表敲击的砖块面,有如下6种值:
 		<td>位掩码: 0x1: 跳跃 0x2: 卸下</td>
 	</tr>
 </table>
+
+##关闭窗口
+
+客户端会在窗口关闭的时候发送此数据包. 
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td>0x0D</td>
+		<td>游戏</td>
+		<td>服务器</td>
+		<td>Window ID</td>
+		<td>Byte</td>
+		<td>这是窗口关闭的ID。0是物品栏。</td>
+	</tr>
+</table>
+
+
