@@ -1,4 +1,4 @@
-# Server List Ping
+# 服务器列表Ping
 
 ------------
 
