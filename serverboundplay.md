@@ -416,3 +416,73 @@ Face代表敲击的砖块面,有如下6种值:
 		<td>无字段</td>
 	</tr>
 </table>
+
+##实体表现
+
+当玩家蹲下，离开床，或者奔跑等等动作时发送。使用0x28发送动画动作到客户端，客户端会在“离开床”被点击时发送此动作ID为3的包。
+
+<table>
+	<tr>
+		<th>包标识符</th>
+		<th>类别</th>
+		<th>绑定到</th>
+		<th>字段名</th>
+		<th>字段类型</th>
+		<th>备注</th>
+	</tr>
+	<tr>
+		<td rowspan=3>0x0B</td>
+		<td rowspan=3>游戏</td>
+		<td rowspan=3>服务器</td>
+		<td>Entity ID</td>
+		<td>VarInt</td>
+		<td>玩家的ID</td>
+	</tr>
+	<tr>
+		<td>Action ID</td>
+		<td>VarInt</td>
+		<td>动作ID，看下面</td>
+	</tr>
+	<tr>
+		<td>Jump Boost</td>
+		<td>VarInt</td>
+		<td>马的加速跳，范围是0->100</td>
+	</tr>
+</table>
+
+动作ID可以是以下数值:
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>动作</th>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>蹲伏</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>解除蹲伏</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>离开床</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>开始奔跑</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>停止奔跑</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>骑马跳跃</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>打开物品栏</td>
+	</tr>
+</table>
