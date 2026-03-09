@@ -133,10 +133,10 @@ Minecraft 协议
     * 6.1.1 [断开连接](protocol.md#断开连接-1)
     * 6.1.2 [请求加密](protocol.md#请求加密)
     * 6.1.3 [登录成功](protocol.md#登录成功)
-    * 6.1.4 [设置压缩](protocol.md#启用压缩)
+    * 6.1.4 [启用压缩](protocol.md#启用压缩)
   * 6.2 [服务端](protocol.md#服务端-3)
     * 6.2.1 [开始登录](protocol.md#开始登录)
-    * 6.2.2 [加密响应](protocol.md#响应加密)
+    * 6.2.2 [响应加密](protocol.md#响应加密)
 
 前言
 ----
